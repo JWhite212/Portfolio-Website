@@ -5,6 +5,7 @@
 	"bracketSameLine": true,
 	"bracketSpacing": true,
 	"singleAttributePerLine": true,
+	"quoteProps": "as-needed",
 
 
 

@@ -1,0 +1,17 @@
+{
+	"arrowParens": "always",
+	"singleQuote": false,
+	"semi": true,
+	"bracketSameLine": true,
+	"bracketSpacing": true,
+	"singleAttributePerLine": true,
+
+
+
+	"overrides": [
+	  {
+		"files": ".changeset/**/*"
+
+	  }
+	]
+  }

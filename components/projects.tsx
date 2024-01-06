@@ -7,7 +7,7 @@ import Project from "./project";
 import SectionHeading from "./section-heading";
 
 export default function Projects() {
-  const { ref } = useSectionInView("Projects", 0.60);
+  const { ref } = useSectionInView("Projects", 0.6);
 
   return (
     <section

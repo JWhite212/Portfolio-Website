@@ -2,7 +2,9 @@
 
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 import { FaPaperPlane } from "react-icons/fa";
+import { sendEmail } from "../actions/sendEmail";
 import SectionHeading from "./section-heading";
 
 export default function Contact() {
@@ -27,15 +29,32 @@ export default function Contact() {
         </a>{" "}
         or through this form.
       </p>
-      <form className="mt-10 flex flex-col ">
+      <form
+        className="mt-10 flex flex-col dark:text-black"
+        action={async (formData) => {
+          const { data, error } = await sendEmail(formData);
+
+          if (error) {
+            toast.error(error);
+            return;
+          }
+
+          toast.success("Email sent successfully!");
+        }}>
         <input
           className="h-14 rounded-lg borderBlack px-4"
           type="email"
+          name="senderEmail"
+          required
+          maxLength={500}
           placeholder="Your email"
         />
         <textarea
           className="h-52 my-3 rounded-lg borderBlack p-4"
+          name="message"
           placeholder="Your message"
+          required
+          maxLength={500}
         />
         <button
           className="group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-gray-900 text-white rounded-full outline-none transition-all focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 cursor-pointer borderBlack"

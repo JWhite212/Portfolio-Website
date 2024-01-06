@@ -71,7 +71,7 @@ export default function Intro() {
           <BsArrowRight className="opacity-70 group-hover:translate-x-1" />
         </Link>
         <a
-          className="group bg-white text-black px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 cursor-pointer border-black-/10 transition"
+          className="group bg-white text-black px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 cursor-pointer borderBlack transition"
           href="/CV.pdf"
           onClick={() => {
             setActiveSection("Contact");
@@ -81,13 +81,13 @@ export default function Intro() {
           <HiDownload className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
         <a
-          className="bg-white text-gray-700 p-4 flex items-center gap-2 rounded-full outline-none focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 cursor-pointer border-black-/10 transition"
+          className="bg-white text-gray-700 p-4 flex items-center gap-2 rounded-full outline-none focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 cursor-pointer borderBlack transition"
           href="https://www.linkedin.com/in/jamie-white-swe/">
           {" "}
           <BsLinkedin />
         </a>
         <a
-          className="bg-white text-gray-700 p-4 flex items-center gap-2 rounded-full outline-none focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 cursor-pointer border-black-/10 transition"
+          className="bg-white text-gray-700 p-4 flex items-center gap-2 rounded-full outline-none focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 cursor-pointer borderBlack transition"
           href="https://github.com/JWhite212">
           {" "}
           <FaGithubSquare />

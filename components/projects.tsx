@@ -5,7 +5,9 @@ import SectionHeading from "./section-heading";
 
 export default function Projects() {
   return (
-    <section>
+    <section
+      className="scroll-mt-28"
+      id="projects">
       <SectionHeading>My Projects</SectionHeading>
       <div>
         {projectsData.map((project, index) => (

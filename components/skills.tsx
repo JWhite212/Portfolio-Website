@@ -7,7 +7,11 @@ import SectionHeading from "./section-heading";
 
 const fadeInAnimationVarients = {
   initial: { opacity: 0, y: 100 },
-  animate: (index: number) => ({ opacity: 1, y: 0, transition: { delay: 0.05 * index, } }),
+  animate: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.05 * index },
+  }),
 };
 
 export default function Skills() {
@@ -30,7 +34,7 @@ export default function Skills() {
             viewport={{
               once: true,
             }}
-			custom={index}>
+            custom={index}>
             {skill}
           </motion.li>
         ))}

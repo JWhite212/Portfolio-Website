@@ -2,6 +2,7 @@
 
 import { UseActiveSectionContext } from "@/context/active-section-context";
 import { useSectionInView } from "@/lib/hooks";
+import avatarImg from "@/public/avatar.jpg";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,8 +26,8 @@ export default function Intro() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "tween", duration: 0.2 }}>
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=368&h=368&q=100"
-              alt="Ricardo portrait"
+              src={avatarImg}
+              alt="Jamie White portrait"
               width="192"
               height="192"
               quality="95"
@@ -52,11 +53,9 @@ export default function Intro() {
         className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
-        <span className="font-bold">Hello, I'm Ricardo.</span> I'm a
-        <span className="font-bold"> full-stack developer</span> with
-        <span className="font-bold"> 8 years</span> of experience. I enjoy
-        building <span className="italic">sites & apps</span>. My focus is
-        <span className="underline"> React (Next.js)</span>.
+        <span className="font-bold">Hi, I'm Jamie.</span> I'm a recent
+        <span className="font-bold"> BSc Computer Science Graduate</span> seeking <span className="font-bold">Junior Software Developer</span> opportunities
+        to showcase my skills and gain experience.
       </motion.h1>
 
       <motion.div

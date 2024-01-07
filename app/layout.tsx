@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Jamie | Personal Portfolio",
   description:
-    "Jamie White is a recent BSc Computer Science graduate, currently looking for software engineering based roles in the UK.",
+    "Jamie White is a Recent Computer Science graduate (BSc Hons, Upper Second Class) from the University of Kent, currently pursuing an MSc in Advanced Computer Science and seeking Software Development roles in the UK.",
 };
 
 export default function RootLayout({

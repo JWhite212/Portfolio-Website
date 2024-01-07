@@ -50,12 +50,13 @@ export default function Intro() {
         </div>
       </div>
       <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+        className="mb-10 mt-3 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
         <span className="font-bold">Hi, I'm Jamie.</span> I'm a recent
         <span className="font-bold"> BSc Computer Science Graduate</span>{" "}
-        seeking <span className="font-bold">Junior Software Developer</span>{" "}
+        seeking{" "}
+        <span className="font-bold">Graduate/Junior Software Developer</span>{" "}
         opportunities to showcase my skills and gain experience.
       </motion.h1>
 
@@ -68,7 +69,7 @@ export default function Intro() {
           href="#contact"
           className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition">
           Contact me here{" "}
-          <BsArrowRight className="opacity-70 group-hover:translate-x-1" />
+          <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
         </Link>
         <a
           className="group bg-white text-black px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 cursor-pointer borderBlack transition"

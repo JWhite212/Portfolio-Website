@@ -10,7 +10,7 @@ export default function About() {
   return (
     <motion.section
       ref={ref}
-      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28 "
+      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-80 scroll-mt-28 "
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.125 }}
@@ -25,7 +25,7 @@ export default function About() {
         as it allows individuals from various backgrounds to unite and solve
         common challenges.
       </p>
-      <p>
+      <p className="mb-3">
         💡 Proficient in a diverse range of languages and technologies,
         specifically{" "}
         <span className="font-bold">
@@ -36,7 +36,7 @@ export default function About() {
         development industry, enjoying the opportunity to continually learn and
         apply cutting-edge technologies to my work.
       </p>
-      <p>
+      <p className="mb-3">
         🌐 Currently, I am actively{" "}
         <span className="font-bold">seeking Software Development Jobs</span>.
         These Jobs would present fresh challenges, allowing me to push beyond my

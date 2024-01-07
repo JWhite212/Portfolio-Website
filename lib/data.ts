@@ -38,7 +38,7 @@ export const experiencesData = [
     title: "Graduated bootcamp",
     location: "Miami, FL",
     description:
-        "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui.",
     icon: React.createElement(LuGraduationCap),
     date: "2019",
   },
@@ -46,7 +46,7 @@ export const experiencesData = [
     title: "Front-End Developer",
     location: "Orlando, FL",
     description:
-        "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui.",
     icon: React.createElement(CgWorkAlt),
     date: "2019 - 2021",
   },
@@ -54,7 +54,7 @@ export const experiencesData = [
     title: "Full-Stack Developer",
     location: "Houston, TX",
     description:
-        "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     icon: React.createElement(FaReact),
     date: "2021 - present",
   },
@@ -62,23 +62,32 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Portfolio Website",
     description:
-        "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
+        "My personal portfolio website showcasing a list of my projects, skills, contact details and information about myself. I have used Framer Motion to implement animations.",
+    tags: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Framer Motion",
+      "React Email",
+      "Resend",
+      "Vercel",
+    ],
     imageUrl: corpcommentImg,
   },
   {
     title: "rmtDev",
     description:
-        "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
     imageUrl: rmtdevImg,
   },
   {
     title: "Word Analytics",
     description:
-        "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
     imageUrl: wordanalyticsImg,
   },
@@ -95,7 +104,7 @@ export const skillsData = [
   "Gatsby",
   "Next.js",
   "Node.js",
-  "GoLang",
+  "Go",
   "Git",
   "Tailwind",
   "MongoDB",
@@ -105,5 +114,4 @@ export const skillsData = [
   "PostgreSQL",
   "Framer Motion",
   "Bootstrap",
-
 ] as const;

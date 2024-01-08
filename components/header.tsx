@@ -1,10 +1,10 @@
 "use client";
 
+import { UseActiveSectionContext } from "@/context/active-section-context";
+import { links } from "@/lib/data";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { UseActiveSectionContext } from "../context/active-section-context";
-import { links } from "../lib/data";
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
@@ -36,14 +36,14 @@ export default function Header() {
                 href={link.hash}
                 onClick={() => {
                   setActiveSection(link.name);
-                  setTimeOfLastClick(Date.now);
+                  setTimeOfLastClick(Date.now());
                 }}>
                 {link.name}
 
                 {link.name === activeSection && (
                   <motion.span
-                    className="bg-gray-100 rounded-full absolute inset-0 -z-10"
-                    layoutId="activeSelection"
+                    className="bg-gray-100 rounded-full absolute inset-0 -z-10 dark:bg-gray-800"
+                    layoutId="activeSection"
                     transition={{
                       type: "spring",
                       stiffness: 380,

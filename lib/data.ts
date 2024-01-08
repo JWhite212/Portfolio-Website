@@ -2,9 +2,9 @@ import corpcommentImg from "@/public/corpcomment.png";
 import rmtdevImg from "@/public/rmtdev.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
 import React from "react";
-import {CgWorkAlt} from "react-icons/cg";
-import {FaReact} from "react-icons/fa";
-import {LuGraduationCap} from "react-icons/lu";
+import { CgWorkAlt } from "react-icons/cg";
+import { FaReact } from "react-icons/fa";
+import { LuGraduationCap } from "react-icons/lu";
 
 export const links = [
   {
@@ -38,7 +38,7 @@ export const experiencesData = [
     title: "Graduated bootcamp",
     location: "Miami, FL",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui.",
     icon: React.createElement(LuGraduationCap),
     date: "2019",
   },
@@ -46,7 +46,7 @@ export const experiencesData = [
     title: "Front-End Developer",
     location: "Orlando, FL",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui.",
     icon: React.createElement(CgWorkAlt),
     date: "2019 - 2021",
   },
@@ -54,7 +54,7 @@ export const experiencesData = [
     title: "Full-Stack Developer",
     location: "Houston, TX",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     icon: React.createElement(FaReact),
     date: "2021 - present",
   },
@@ -64,7 +64,7 @@ export const projectsData = [
   {
     title: "Portfolio Website",
     description:
-        "My personal portfolio website showcasing a list of my projects, skills, contact details and information about myself. I have used Framer Motion to implement animations.",
+      "My personal portfolio website showcasing a list of my projects, skills, contact details and information about myself. I have used Framer Motion to implement animations.",
     tags: [
       "React",
       "Next.js",
@@ -80,14 +80,14 @@ export const projectsData = [
   {
     title: "rmtDev",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
     imageUrl: rmtdevImg,
   },
   {
     title: "Word Analytics",
     description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec aliquet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
     imageUrl: wordanalyticsImg,
   },

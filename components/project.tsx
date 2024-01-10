@@ -45,6 +45,7 @@ export default function Project({
         alt="Project I worked on"
         quality={95}
         className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
+        sm:group-even:mt-[7rem]
         transition
         group-hover:scale-[1.04]
         group-hover:-translate-x-3

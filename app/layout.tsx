@@ -2,6 +2,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
@@ -37,6 +38,7 @@ export default function RootLayout({
           <Toaster position="top-right" />
         </ActiveSectionContextProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

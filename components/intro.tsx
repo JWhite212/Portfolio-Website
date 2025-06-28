@@ -54,10 +54,10 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
         <span className="font-bold">Hi, I'm Jamie.</span> I'm a recent
-        <span className="font-bold"> BSc Computer Science Graduate</span>{" "}
+        <span className="font-bold"> MSc Computer Science Graduate</span>{" "}
         seeking{" "}
-        <span className="font-bold">Graduate/Junior Software Developer</span>{" "}
-        opportunities to showcase my skills and gain experience.
+        <span className="font-bold">Graduate/Junior Software Engineer</span>{" "}
+        roles and opportunities to showcase my skills and gain experience.
       </motion.h1>
 
       <motion.div
@@ -73,7 +73,7 @@ export default function Intro() {
         </Link>
         <a
           className="group bg-white text-black px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 cursor-pointer borderBlack transition"
-          href="/CV.pdf"
+          href="/Jamie White CV.pdf"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());

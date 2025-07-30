@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Portfolio Website
 This project is a professional interactive portfolio to showcase my skills, experience, and projects to potential employers, clients, or collaborators. Acting as a centralized hub where visitors can learn more about me and my work.
 

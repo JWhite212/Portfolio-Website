@@ -1,6 +1,7 @@
 import corpcommentImg from "@/public/corpcomment.png";
 import plantSystemImg from "@/public/plantSystem.jpg";
 import vendingMachineImg from "@/public/vendingMachine.png";
+import snacklessImg from "@/public/snackless.png";
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
@@ -62,6 +63,13 @@ export const experiencesData = [
 
 export const projectsData = [
   {
+    title: "Snackless App",
+    description:
+      "A cross-platform Flutter application delivering a guided 30-day diet programme with daily audio, food logging, and Wix backend integration.",
+    tags: ["Flutter", "Dart", "Riverpod", "Wix", "Stripe"],
+    imageUrl: snacklessImg,
+  },
+  {
     title: "Portfolio Website",
     description:
       "My personal portfolio website. Built with React, Next.js, TypeScript and styled using Tailwind CSS. Using Framer Motion to animate it, React Email and Resend, to provide the contact form functionality.",
@@ -118,6 +126,9 @@ export const skillsData = [
   "Gatsby",
   "Next.js",
   "Node.js",
+  "Dart",
+  "Flutter",
+  "Riverpod",
   "Go",
   "Git",
   "Tailwind CSS",

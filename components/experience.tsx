@@ -30,19 +30,21 @@ export default function Experience() {
                 boxShadow: "none",
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
-                padding: "1.3rem 2rem",
+                padding: "1.3rem 2rem 1.3rem 2rem",
               }}
               contentArrowStyle={{
                 borderRight: "0.4rem solid #9ca3af",
               }}
-              date={item.date}
               icon={item.icon}
               iconStyle={{
                 background: "white",
                 fontSize: "1.5rem",
               }}
               className="[&_.vertical-timeline-element-content]:dark:!bg-neutral-dark [&_.vertical-timeline-element-content]:dark:!text-gray-100">
-              <h3 className="font-semibold capitalize">{item.title}</h3>
+              <div className="flex justify-between items-start mb-1">
+                <h3 className="font-semibold capitalize">{item.title}</h3>
+                <span className="text-xs text-gray-500 dark:text-gray-300 whitespace-nowrap ml-4">{item.date}</span>
+              </div>
               <p className="font-normal !mt-0">{item.location}</p>
               <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">
                 {item.description}

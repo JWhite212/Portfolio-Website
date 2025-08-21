@@ -1,7 +1,9 @@
 # Portfolio Website
-This project is a professional interactive portfolio to showcase my skills, experience, and projects to potential employers, clients, or collaborators. Acting as a centralized hub where visitors can learn more about me and my work.
+
+This project is a professional interactive portfolio to showcase my skills, experience, and projects to potential employers, clients, or collaborators. Acting as a centralized hub where visitors can learn more about me and my work. It now features recent highlights like **Snackless**, a cross-platform Flutter app demonstrating my mobile development expertise.
 
 ## Tech Stack
+
 To bring this dynamic portfolio to life, I've utilized a cutting-edge tech stack:
 
 * React: I've leveraged React's component-based architecture to ensure a smooth and seamless user experience.

@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { BsSun, BsMoon, BsList } from "react-icons/bs";
 import { AnimatePresence, motion as m } from "framer-motion";
 
+export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } = UseActiveSectionContext();
   const [isDark, setIsDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -144,3 +145,4 @@ import { AnimatePresence, motion as m } from "framer-motion";
       </nav>
     </header>
   );
+}

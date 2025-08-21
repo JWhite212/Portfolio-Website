@@ -20,8 +20,7 @@
 *.pem
 .vscode
 .idea
-copilet-instructions.md
-
+copilot-instructions.md
 # debug
 npm-debug.log*
 yarn-debug.log*

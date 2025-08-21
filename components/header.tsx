@@ -40,10 +40,11 @@ export default function Header() {
         className="fixed top-0 left-0 w-full h-16 border-b border-primary/20 bg-white bg-opacity-95 shadow-lg shadow-black/[0.03] dark:bg-neutral-dark dark:border-primary/30 dark:bg-opacity-95 sm:left-1/2 sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full sm:border sm:bg-opacity-90 sm:dark:bg-opacity-80 sm:rounded-full sm:left-1/2 sm:-translate-x-1/2"
         initial={{ y: -100, x: 0, opacity: 0 }}
         animate={{ y: 0, x: 0, opacity: 1 }}
+        style={{ left: undefined }}
       />
 
       <nav className="flex fixed top-0 left-0 w-full h-16 items-center justify-center z-50 sm:top-[1.7rem] sm:left-1/2 sm:-translate-x-1/2 sm:w-[36rem] sm:h-[3.25rem] sm:rounded-full">
-        <ul className="flex w-full justify-center items-center gap-x-2 gap-y-1 px-2 text-base font-medium text-primary dark:text-primary-dark sm:w-[initial] sm:flex-nowrap sm:gap-5">
+        <ul className="flex w-full max-w-[36rem] justify-center items-center gap-x-2 gap-y-1 px-2 text-base font-medium text-primary dark:text-primary-dark sm:w-[initial] sm:flex-nowrap sm:gap-5">
           {links.map((link) => (
             <motion.li
               className="h-3/4 flex items-center justify-center relative"

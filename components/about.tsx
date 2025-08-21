@@ -1,8 +1,14 @@
 "use client";
 
+
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
 import SectionHeading from "./section-heading";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+};
 
 export default function About() {
   const { ref } = useSectionInView("About");
@@ -16,7 +22,7 @@ export default function About() {
       transition={{ delay: 1.125 }}
       id="about">
       <SectionHeading>About Me</SectionHeading>
-      <p className="mb-3">
+      <motion.p className="mb-3" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: true }}>
         🚀 My journey into software development has been fueled by a deep-seated
         passion for creating high-quality software using object-oriented
         programming languages. My commitment to good coding practices ensures
@@ -24,8 +30,8 @@ export default function About() {
         environments, valuing the diversity of thought that programming brings,
         as it allows individuals from various backgrounds to unite and solve
         common challenges.
-      </p>
-      <p className="mb-3">
+      </motion.p>
+      <motion.p className="mb-3" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: true }}>
         💡 Proficient in a diverse range of languages and technologies,
         specifically{" "}
         <span className="font-bold">
@@ -35,15 +41,15 @@ export default function About() {
         . I believe in staying ahead of the curve in the dynamic software
         development industry, enjoying the opportunity to continually learn and
         apply cutting-edge technologies to my work.
-      </p>
-      <p className="mb-3">
+      </motion.p>
+      <motion.p className="mb-3" variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: true }}>
         🌐 Currently, I am actively{" "}
         <span className="font-bold">seeking Software Development Jobs</span>.
         These Jobs would present fresh challenges, allowing me to push beyond my
         comfort zone, continually improve, and embrace new experiences. Let's
         connect and explore the possibilities at the intersection of innovation
         and technology! 🚀✨
-      </p>
+      </motion.p>
     </motion.section>
   );
 }

@@ -15,9 +15,9 @@ export default function Contact() {
       ref={ref}
       id="contact"
       className="mb-20 sm:mb-28 w-full max-w-lg px-4 text-center bg-white/80 dark:bg-neutral-dark/80 rounded-xl shadow-md py-10 sm:py-16 mx-auto"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
       viewport={{ once: true }}>
       <SectionHeading>Contact Me</SectionHeading>
       <p className="text-gray-700 -mt-6">

@@ -3,6 +3,7 @@
 import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import React from "react";
+import { motion } from "framer-motion";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -21,7 +22,13 @@ export default function Experience() {
       <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
         {experiencesData.map((item, index) => (
-          <React.Fragment key={index}>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05 * index }}
+          >
             <VerticalTimelineElement
               visible={true}
               contentStyle={{
@@ -50,7 +57,7 @@ export default function Experience() {
                 {item.description}
               </p>
             </VerticalTimelineElement>
-          </React.Fragment>
+          </motion.div>
         ))}
       </VerticalTimeline>
     </section>

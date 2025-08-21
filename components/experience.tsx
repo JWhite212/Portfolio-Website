@@ -25,7 +25,8 @@ export default function Experience() {
             <VerticalTimelineElement
               visible={true}
               contentStyle={{
-                background: "#f3f4f6",
+                background: "var(--vt-bg, #f3f4f6)",
+                color: "var(--vt-text, #18181b)",
                 boxShadow: "none",
                 border: "1px solid rgba(0, 0, 0, 0.05)",
                 textAlign: "left",
@@ -39,7 +40,8 @@ export default function Experience() {
               iconStyle={{
                 background: "white",
                 fontSize: "1.5rem",
-              }}>
+              }}
+              className="[&_.vertical-timeline-element-content]:dark:!bg-neutral-dark [&_.vertical-timeline-element-content]:dark:!text-gray-100">
               <h3 className="font-semibold capitalize">{item.title}</h3>
               <p className="font-normal !mt-0">{item.location}</p>
               <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">

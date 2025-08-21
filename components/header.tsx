@@ -38,7 +38,7 @@ export default function Header() {
 
   // Close menu on navigation
   const handleNavClick = (name: string) => {
-    setActiveSection(name);
+    setActiveSection(name as typeof links[number]["name"]);
     setTimeOfLastClick(Date.now());
     setMenuOpen(false);
   };

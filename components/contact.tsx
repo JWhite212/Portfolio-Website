@@ -14,7 +14,7 @@ export default function Contact() {
     <motion.section
       ref={ref}
       id="contact"
-      className="mb-20 sm:mb-28 w-full max-w-lg px-4 text-center bg-white/80 dark:bg-neutral-dark/80 rounded-xl shadow-md py-10 sm:py-16 mx-auto"
+      className="mb-12 sm:mb-28 w-full max-w-md px-2 sm:px-4 text-center bg-white/80 dark:bg-neutral-dark/80 rounded-xl shadow-md py-6 sm:py-16 mx-auto text-base sm:text-lg"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}

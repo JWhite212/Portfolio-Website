@@ -19,11 +19,11 @@ export default function Skills() {
 
   return (
     <section
-      className="mb-24 sm:mb-40 max-w-3xl w-full px-4 scroll-mt-28 text-center mx-auto"
+      className="mb-16 sm:mb-40 max-w-2xl w-full px-2 sm:px-4 scroll-mt-20 text-center mx-auto"
       ref={ref}
       id="skills">
       <SectionHeading>My Skills</SectionHeading>
-      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800 dark:text-gray-100">
+  <ul className="flex flex-wrap justify-center gap-1 sm:gap-2 text-base sm:text-lg text-gray-800 dark:text-gray-100">
         {skillsData.map((skill, index) => (
           <motion.li
             className="bg-white border border-black/[0.1] rounded-xl px-5 py-3 dark:bg-neutral-dark dark:border-gray-700 dark:text-gray-100 cursor-pointer transition-shadow"

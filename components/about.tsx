@@ -16,7 +16,7 @@ export default function About() {
   return (
     <motion.section
       ref={ref}
-      className="mb-24 sm:mb-40 max-w-2xl w-full px-4 text-center leading-8 scroll-mt-28 bg-white/80 dark:bg-neutral-dark/80 rounded-xl shadow-md py-10 sm:py-16 mx-auto"
+  className="mb-16 sm:mb-40 max-w-2xl w-full px-2 sm:px-4 text-center leading-7 sm:leading-8 scroll-mt-20 bg-white/80 dark:bg-neutral-dark/80 rounded-xl shadow-md py-6 sm:py-16 mx-auto text-base sm:text-lg"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.125 }}

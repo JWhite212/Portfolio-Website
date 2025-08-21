@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <section
       ref={ref}
-      className="scroll-mt-28 mb-24 sm:mb-40 w-full max-w-4xl px-4 mx-auto"
+      className="scroll-mt-20 mb-16 sm:mb-40 w-full max-w-2xl px-2 sm:px-4 mx-auto"
       id="projects">
       <SectionHeading>My Projects</SectionHeading>
       <motion.div

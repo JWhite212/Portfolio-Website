@@ -142,7 +142,5 @@ import { AnimatePresence, motion as m } from "framer-motion";
           )}
         </AnimatePresence>
       </nav>
-      </nav>
     </header>
   );
-}

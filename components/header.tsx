@@ -51,7 +51,7 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
       />
 
-  <nav className="flex fixed top-0 left-0 w-full h-16 items-center justify-between z-50 sm:top-[1.7rem] sm:left-1/2 sm:-translate-x-1/2 sm:w-[36rem] sm:h-[3.25rem] sm:rounded-full px-4">
+  <nav className="flex fixed top-0 left-0 w-full h-16 items-center justify-between z-50 sm:top-[1.7rem] sm:w-[36rem] sm:h-[3.25rem] sm:rounded-full px-4">
         {/* Hamburger for mobile */}
         <div className="flex items-center sm:hidden">
           <button

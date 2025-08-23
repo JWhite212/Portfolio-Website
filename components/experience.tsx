@@ -44,13 +44,23 @@ export default function Experience() {
               }}
               icon={item.icon}
               iconStyle={{
-                background: "white",
+                background: "var(--vt-icon-bg, #fff)",
+                color: "var(--vt-icon-text, #18181b)",
                 fontSize: "1.5rem",
+                border: "1px solid rgba(0,0,0,0.07)",
               }}
-              className="[&_.vertical-timeline-element-content]:dark:!bg-neutral-dark [&_.vertical-timeline-element-content]:dark:!text-gray-100">
+              className={`
+                [&_.vertical-timeline-element-content]:dark:!bg-neutral-dark
+                [&_.vertical-timeline-element-content]:dark:!text-gray-100
+                [&_.vertical-timeline-element-content]:bg-gray-100
+                [&_.vertical-timeline-element-content]:text-gray-900
+                dark:[&_.vertical-timeline-element-content]:!bg-neutral-dark
+                dark:[&_.vertical-timeline-element-content]:!text-gray-100
+              `}
+            >
               <div className="flex justify-between items-start mb-1">
                 <h3 className="font-semibold capitalize">{item.title}</h3>
-                 <span className="text-[11px] text-gray-500 dark:text-gray-300 ml-2 text-right whitespace-nowrap flex-shrink-0">
+                <span className="text-[11px] text-gray-500 dark:text-gray-300 ml-2 text-right whitespace-nowrap flex-shrink-0">
                   {item.date}
                 </span>
               </div>

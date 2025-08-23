@@ -18,7 +18,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={ref}
-      className="scroll-mt-20 mb-16 sm:mb-40 w-full max-w-2xl px-2 sm:px-4 mx-auto">
+      className="scroll-mt-20 mb-16 sm:mb-40 w-full max-w-7xl px-2 sm:px-4 mx-auto">
       <SectionHeading>My experience</SectionHeading>
       <VerticalTimeline lineColor="">
         {experiencesData.map((item, index) => (
@@ -27,8 +27,8 @@ export default function Experience() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.05 * index }}
-          >
+            transition={{ delay: 0.05 * index }}>
+
             <VerticalTimelineElement
               visible={true}
               contentStyle={{
@@ -50,7 +50,9 @@ export default function Experience() {
               className="[&_.vertical-timeline-element-content]:dark:!bg-neutral-dark [&_.vertical-timeline-element-content]:dark:!text-gray-100">
               <div className="flex justify-between items-start mb-1">
                 <h3 className="font-semibold capitalize">{item.title}</h3>
-                <span className="text-[11px] text-gray-500 dark:text-gray-300 whitespace-nowrap ml-2 max-w-[80px] text-right truncate overflow-ellipsis">{item.date}</span>
+                 <span className="text-[11px] text-gray-500 dark:text-gray-300 whitespace-nowrap ml-2 max-w-[80px] text-right truncate overflow-ellipsis">
+                  {item.date}
+                </span>
               </div>
               <p className="font-normal !mt-0">{item.location}</p>
               <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">

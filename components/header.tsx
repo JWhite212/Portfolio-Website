@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header className="z-[999] relative">
        <div className="fixed top-0 left-0 w-full sm:top-6">
-        <div className="relative mx-auto h-16 w-full sm:h-[3.25rem] sm:w-[36rem]">
+        <div className="relative mx-auto h-16 w-full sm:h-[3.25rem] sm:w-[48rem]">
           <motion.div
             className="absolute inset-0 border-b border-primary/20 bg-white bg-opacity-95 shadow-lg shadow-black/[0.03] dark:bg-neutral-dark dark:border-primary/30 dark:bg-opacity-95 sm:rounded-full sm:border sm:bg-opacity-90 sm:dark:bg-opacity-80"
             initial={{ y: -100, opacity: 0 }}

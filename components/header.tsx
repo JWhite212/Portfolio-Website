@@ -14,10 +14,28 @@ export default function Header() {
   const [isDark, setIsDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Sync with system/user preference on mount
+  // Sync with system/user preference on mount and respond to changes
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsDark(document.documentElement.classList.contains("dark"));
+       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+      const applyTheme = () => {
+        const stored = localStorage.getItem("theme");
+        const isDarkMode = stored ? stored === "dark" : mediaQuery.matches;
+        document.documentElement.classList.toggle("dark", isDarkMode);
+        setIsDark(isDarkMode);
+      };
+
+      applyTheme();
+      const mediaListener = (e: MediaQueryListEvent) => {
+        if (!localStorage.getItem("theme")) {
+          document.documentElement.classList.toggle("dark", e.matches);
+          setIsDark(e.matches);
+        }
+      };
+
+      mediaQuery.addEventListener("change", mediaListener);
+      return () => mediaQuery.removeEventListener("change", mediaListener);
     }
   }, []);
 
@@ -66,11 +84,12 @@ export default function Header() {
             {/* Desktop nav */}
             <ul className="hidden sm:flex w-full max-w-[48rem] justify-center items-center gap-x-2 gap-y-1 px-2 text-base font-medium text-primary dark:text-primary-dark sm:w-[initial] sm:flex-nowrap sm:gap-5">
               {links.map((link) => (
-<motion.li
+                <motion.li
                   className="h-3/4 flex items-center justify-center relative"
                   key={link.hash}
                   initial={{ y: -100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}>                  <Link
+                  animate={{ y: 0, opacity: 1 }}>
+                  <Link
                     className={clsx(
                       "flex w-full items-center justify-center px-3 py-3 hover:text-accent transition dark:text-primary-dark dark:hover:text-accent-dark min-w-[60px] min-h-[44px] sm:min-w-0 sm:min-h-0",
                       {
@@ -80,9 +99,8 @@ export default function Header() {
                     )}
                     href={link.hash}
                     onClick={() => handleNavClick(link.name)}>
-
                     {link.name}
-                     {link.name === activeSection && (
+                    {link.name === activeSection && (
                       <motion.span
                         className={clsx(
                           "bg-accent/10 rounded-full absolute -z-10 dark:bg-accent-dark/20",
@@ -98,7 +116,6 @@ export default function Header() {
                     )}
                   </Link>
                 </motion.li>
-
               ))}
             </ul>
             {/* Dark mode toggle always visible */}

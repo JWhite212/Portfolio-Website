@@ -23,7 +23,25 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="!scroll-smooth">
+      className="!scroll-smooth"
+      suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              const theme = localStorage.getItem('theme');
+              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            })();
+          `,
+          }}
+        />
+      </head>
       <body
         className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 overflow-x-hidden dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}>
         <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] sm:right-[-11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[90.75rem] dark:bg-[#946263]"></div>

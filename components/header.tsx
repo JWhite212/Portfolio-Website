@@ -64,7 +64,7 @@ export default function Header() {
               </button>
             </div>
             {/* Desktop nav */}
-            <ul className="hidden sm:flex w-full max-w-[36rem] justify-center items-center gap-x-2 gap-y-1 px-2 text-base font-medium text-primary dark:text-primary-dark sm:w-[initial] sm:flex-nowrap sm:gap-5">
+            <ul className="hidden sm:flex w-full max-w-[48rem] justify-center items-center gap-x-2 gap-y-1 px-2 text-base font-medium text-primary dark:text-primary-dark sm:w-[initial] sm:flex-nowrap sm:gap-5">
               {links.map((link) => (
 <motion.li
                   className="h-3/4 flex items-center justify-center relative"

@@ -36,11 +36,19 @@ export const links = [
 
 export const experiencesData = [
 	{
+		title: "Software & Solutions Engineer",
+		location: "Quo Vadis CCS, Remote",
+		description:
+			"Build and configure customer-experience solutions on Genesys Cloud CX; designing inbound IVR/Architect flows, queues, and routing that reduce handle time and improve first-contact resolution. Develop custom integrations and automations with CRM/ITSM platforms (e.g., Salesforce, Zendesk, ServiceNow) using secure REST/webhooks and event-driven patterns to sync customer context in real time. Ship backend services and tooling (Node.js/TypeScript and Python) to orchestrate workflows, data enrichment, and reporting across voice and digital channels. Translate client journey maps and SLAs into robust, measurable solutions; instrument monitoring/alerting and create dashboards for service health and CX KPIs. Champion engineering quality, code reviews, testing, CI/CD, and IaC, while meeting security, confidentiality, and compliance requirements. Produce clear runbooks and client-ready documentation; deliver technical handovers and stakeholder demos. Continuously upskill through platform certifications and mentorship, contributing to internal knowledge bases and reusable solution patterns.",
+		icon: React.createElement(CgWorkAlt),
+		date: "Sept 2025 – Current",
+	},
+	{
 		title: "Customer Assistant",
 		location: "Morrisons, Farnborough",
 		description:
 			"Provided customer service, handled transactions, and supported store operations. Developed communication and teamwork skills while assisting a diverse range of customers.",
-		icon: React.createElement(FaReact),
+		icon: React.createElement(CgWorkAlt),
 		date: "Nov 2024 – Aug 2025",
 	},
 	{
@@ -84,17 +92,17 @@ export const experiencesData = [
 		title: "Customer Assistant",
 		location: "Marks and Spencer, Guildford",
 		description: "Provided customer service and supported store operations, developing strong communication and organizational skills.",
-		icon: React.createElement(FaReact),
+		icon: React.createElement(CgWorkAlt),
 		date: "Apr 2017 – Oct 2018",
 	},
 ] as const;
 
 export const projectsData = [
 	{
-		title: "Snackless App",
+		title: "Snackless Cross-platform Mobile App",
 		description:
 			"A cross-platform Flutter application delivering a guided 30-day diet programme with daily audio, food logging, and Wix backend integration.",
-		tags: ["Flutter", "Dart", "Riverpod", "Wix", "Stripe"],
+		tags: ["Flutter", "Dart", "Riverpod", "Wix", "Stripe", "Firebase", "iOS", "Android"],
 		imageUrl: snacklessImg,
 	},
 	{

@@ -54,10 +54,10 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
         <span className="font-bold">Hi, I'm Jamie.</span> I'm a recent
-        <span className="font-bold"> MSc Computer Science Graduate</span>
-        achieving a Distinction. Currently working as a
-        <span className="font-bold">Junior Software Engineer</span>{" "}
-        Welcome to my portfolio website, a place to showcase my skills and experience.
+        <span className="font-bold"> MSc Computer Science Graduate,</span>
+         achieving a Distinction. I am currently working as a
+        <span className="font-bold"> Software Engineer</span>{" "}
+        . Welcome to my portfolio website, a place to showcase my skills and experience.
       </motion.h1>
 
       <motion.div

@@ -55,7 +55,7 @@ export default function Intro() {
         animate={{ opacity: 1, y: 0 }}>
         <span className="font-bold">Hi, I'm Jamie.</span> I'm a recent
         <span className="font-bold"> MSc Computer Science Graduate, </span>
-        achieving a Distinction. I am currently working as a
+        achieving a Distinction grade. I am currently working as a
         <span className="font-bold"> Software Engineer</span>.
       </motion.h1>
 
@@ -82,7 +82,7 @@ export default function Intro() {
         </a>
         <a
           className="bg-white text-gray-700 p-4 flex items-center gap-2 rounded-full outline-none focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 cursor-pointer borderBlack transition"
-          href="https://www.linkedin.com/in/jamie-white-swe/">
+          href="https://www.linkedin.com/in/jamie--white/">
           {" "}
           <BsLinkedin />
         </a>

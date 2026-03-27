@@ -25,15 +25,22 @@ export default function ContactFormEmail({
       <Head />
       <Preview>New message from your portfolio site</Preview>
       <Tailwind>
-        <Body className="bg-gray-100 text-black">
-          <Container>
-            <Section className="bg-white borderBlack my-10 px-10 py-4 rounded-md">
-              <Heading className="leading-tight">
-                You received the following message from the contact form
+        <Body className="bg-[#f2eee6] px-6 py-10 font-sans text-[#151a19]">
+          <Container className="mx-auto max-w-[620px] rounded-[24px] border border-[#d5d0c6] bg-white px-8 py-8">
+            <Section>
+              <Text className="m-0 text-[11px] uppercase tracking-[0.35em] text-[#5d635f]">
+                Portfolio enquiry
+              </Text>
+              <Heading className="mb-0 mt-4 text-[28px] font-semibold leading-[1.15] text-[#151a19]">
+                New message from the portfolio contact form
               </Heading>
-              <Text>{message}</Text>
-              <Hr />
-              <Text>The sender's email is: {senderEmail}</Text>
+              <Text className="mb-0 mt-4 text-[15px] leading-7 text-[#47504b]">
+                Sender: <strong>{senderEmail}</strong>
+              </Text>
+              <Hr className="my-6 border-[#d5d0c6]" />
+              <Text className="m-0 text-[15px] leading-7 text-[#151a19]">
+                {message}
+              </Text>
             </Section>
           </Container>
         </Body>

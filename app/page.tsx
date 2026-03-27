@@ -183,10 +183,10 @@ export default function Home() {
                       className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-white px-5 py-5">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                          <h3 className="text-lg font-bold text-[var(--foreground)]">
                             {item.title}
                           </h3>
-                          <h4 className="text-lg font-semibold text-[var(--foreground)]">
+                          <h4 className="text-m font-semibold text-[var(--foreground)]">
                             {item.grade}
                           </h4>
                           <p className="mt-1 text-sm text-[var(--muted)]">

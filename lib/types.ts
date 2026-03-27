@@ -78,6 +78,7 @@ export type ExperienceItem = {
 
 export type EducationItem = {
   title: string;
+  grade: string;
   institution: string;
   period: string;
   summary: string;

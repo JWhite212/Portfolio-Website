@@ -186,6 +186,9 @@ export default function Home() {
                           <h3 className="text-lg font-semibold text-[var(--foreground)]">
                             {item.title}
                           </h3>
+                          <h4 className="text-lg font-semibold text-[var(--foreground)]">
+                            {item.grade}
+                          </h4>
                           <p className="mt-1 text-sm text-[var(--muted)]">
                             {item.institution}
                           </p>

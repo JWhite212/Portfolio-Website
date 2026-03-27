@@ -164,8 +164,8 @@ export default function Home() {
             <Reveal>
               <SectionIntro
                 eyebrow="Experience and education"
-                title="A foundation built through computer science study and public-facing work that demanded reliability."
-                body="My formal training shaped the technical base. The jobs alongside it sharpened communication, prioritisation, and steady delivery under pressure."
+                 title="From customer-facing roles to engineering solutions that ship."
+                 body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
               />
             </Reveal>
 

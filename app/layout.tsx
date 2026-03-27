@@ -54,6 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+<<<<<<< HEAD
       className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased">
         <div className="relative flex min-h-screen flex-col">
@@ -61,6 +62,38 @@ export default function RootLayout({
           <div className="flex-1">{children}</div>
           <SiteFooter />
         </div>
+=======
+      className="!scroll-smooth"
+      suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function() {
+              const theme = localStorage.getItem('theme');
+              const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+              if (theme === 'dark' || (!theme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            })();
+          `,
+          }}
+        />
+      </head>
+      <body
+        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 overflow-x-hidden dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}>
+        <div className="bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] sm:right-[-11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[90.75rem] dark:bg-[#946263]"></div>
+        <div className="bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
+
+        <ActiveSectionContextProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster position="top-right" />
+        </ActiveSectionContextProvider>
+>>>>>>> 39967ba24a908fa881685039e5071215390c8290
         <Analytics />
         <SpeedInsights />
       </body>

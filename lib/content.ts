@@ -245,7 +245,8 @@ export const caseStudies: CaseStudy[] = [
 
 export const education: EducationItem[] = [
   {
-    title: "Advanced Computer Science",
+    title: "Advanced Computer Science, MSc",
+    grade: "Distinction",
     institution: "University of Kent",
     period: "Postgraduate study",
     summary:
@@ -253,6 +254,7 @@ export const education: EducationItem[] = [
   },
   {
     title: "Computer Science, BSc (Hons)",
+    grade: "Upper Second Class Honours (2:1)",
     institution: "University of Kent",
     period: "Undergraduate foundation",
     summary:

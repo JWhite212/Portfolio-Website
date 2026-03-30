@@ -164,8 +164,8 @@ export default function Home() {
             <Reveal>
               <SectionIntro
                 eyebrow="Experience and education"
-                title="A foundation built through computer science study and public-facing work that demanded reliability."
-                body="My formal training shaped the technical base. The jobs alongside it sharpened communication, prioritisation, and steady delivery under pressure."
+                 title="From customer-facing roles to engineering solutions that ship."
+                 body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
               />
             </Reveal>
 
@@ -183,12 +183,12 @@ export default function Home() {
                       className="rounded-[1.35rem] border border-[var(--accent-border)] bg-white px-5 py-5">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                          <h3 className="text-lg font-bold text-[var(--foreground)]">
                             {item.title}
                           </h3>
-                          <span className="mt-1 inline-block rounded-full bg-[var(--accent-soft)] px-2.5 py-0.5 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--accent-strong)]">
+                          <h4 className="text-m font-semibold text-[var(--foreground)]">
                             {item.grade}
-                          </span>
+                          </h4>
                           <p className="mt-1 text-sm text-[var(--muted)]">
                             {item.institution}
                           </p>

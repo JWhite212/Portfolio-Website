@@ -6,11 +6,16 @@
   --background: #f2eee6;
   --surface: rgba(255, 255, 255, 0.68);
   --foreground: #151a19;
-  --muted: #5d635f;
+  --muted: #46504a;
   --line: rgba(21, 26, 25, 0.12);
   --accent: #1d6a60;
   --accent-soft: #dbe9e4;
   --accent-strong: #14433d;
+  --error: #c4453a;
+  --error-strong: #9d3b3b;
+  --accent-border: rgba(21, 26, 25, 0.12);
+  --accent-bg-subtle: rgba(20, 67, 61, 0.08);
+  --accent-bg-card: rgba(255, 255, 255, 0.72);
 }
 
 * {

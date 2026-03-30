@@ -23,7 +23,7 @@ export default function Home() {
     <>
       <StructuredData data={buildHomeStructuredData()} />
 
-      <main>
+      <main id="main-content">
         <HeroSection />
 
         <section
@@ -100,7 +100,7 @@ export default function Home() {
 
               <Reveal
                 delay={0.1}
-                className="rounded-[1.9rem] border border-[var(--line)] bg-[color:rgba(20,67,61,0.08)] p-6 sm:p-8">
+                className="rounded-[1.9rem] border border-[var(--line)] bg-[var(--accent-bg-subtle)] p-6 sm:p-8">
                 <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--accent-strong)]">
                   What I optimise for
                 </p>
@@ -108,7 +108,7 @@ export default function Home() {
                   {profile.principles.map((principle) => (
                     <li
                       key={principle}
-                      className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.14)] bg-[color:rgba(255,255,255,0.74)] px-4 py-4 text-sm leading-7 text-[var(--foreground)]">
+                      className="rounded-[1.35rem] border border-[var(--accent-border)] bg-[var(--accent-bg-card)] px-4 py-4 text-sm leading-7 text-[var(--foreground)]">
                       {principle}
                     </li>
                   ))}
@@ -145,7 +145,7 @@ export default function Home() {
                     {group.skills.map((skill) => (
                       <li
                         key={skill}
-                        className="rounded-full border border-[color:rgba(20,67,61,0.14)] bg-white px-3.5 py-2 text-sm text-[var(--foreground)]">
+                        className="rounded-full border border-[var(--accent-border)] bg-white px-3.5 py-2 text-sm text-[var(--foreground)]">
                         {skill}
                       </li>
                     ))}
@@ -180,12 +180,15 @@ export default function Home() {
                   {education.map((item) => (
                     <article
                       key={item.title}
-                      className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-white px-5 py-5">
+                      className="rounded-[1.35rem] border border-[var(--accent-border)] bg-white px-5 py-5">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <h3 className="text-lg font-semibold text-[var(--foreground)]">
                             {item.title}
                           </h3>
+                          <span className="mt-1 inline-block rounded-full bg-[var(--accent-soft)] px-2.5 py-0.5 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--accent-strong)]">
+                            {item.grade}
+                          </span>
                           <p className="mt-1 text-sm text-[var(--muted)]">
                             {item.institution}
                           </p>
@@ -212,7 +215,7 @@ export default function Home() {
                   {experience.map((item) => (
                     <article
                       key={`${item.title}-${item.period}`}
-                      className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-white px-5 py-5">
+                      className="rounded-[1.35rem] border border-[var(--accent-border)] bg-white px-5 py-5">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <h3 className="text-lg font-semibold text-[var(--foreground)]">
@@ -277,7 +280,10 @@ export default function Home() {
                       <span className="text-base font-medium text-[var(--foreground)]">
                         {link.label}
                       </span>
-                      <BsArrowUpRight className="text-xs text-[var(--muted)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      <BsArrowUpRight
+                        aria-hidden="true"
+                        className="text-xs text-[var(--muted)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      />
                     </div>
                     <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                       {link.description}

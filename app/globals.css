@@ -11,6 +11,8 @@
   --accent: #1d6a60;
   --accent-soft: #dbe9e4;
   --accent-strong: #14433d;
+  --accent-border: rgba(20, 67, 61, 0.14);
+  --accent-bg-subtle: rgba(20, 67, 61, 0.08);
 }
 
 * {

@@ -62,12 +62,6 @@ export default function SiteHeader() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10">
-      <a
-        href="#main-content"
-        className="pointer-events-auto absolute left-4 top-2 z-10 -translate-y-12 rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-[var(--accent)]">
-        Skip to content
-      </a>
-
       <div className="pointer-events-auto mx-auto flex max-w-[88rem] items-center justify-between gap-6 rounded-full border border-[var(--line)] bg-[color:rgba(244,240,232,0.88)] px-4 py-3 shadow-[0_8px_40px_rgba(16,20,19,0.06)] backdrop-blur md:px-6">
         <Link
           href="/"
@@ -75,9 +69,7 @@ export default function SiteHeader() {
           JW / Portfolio
         </Link>
 
-        <nav
-          aria-label="Main navigation"
-          className="min-w-0">
+        <nav className="min-w-0">
           <ul className="flex flex-wrap items-center justify-center gap-1.5 text-sm text-[var(--muted)] sm:gap-2">
             {navigation.map((item) => {
               const isActive =

@@ -84,7 +84,7 @@ export default function CaseStudyCard({
             {caseStudy.technicalDecisions.slice(0, 2).map((decision) => (
               <li
                 key={decision.title}
-                className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-[color:rgba(255,255,255,0.65)] p-5">
+                className="rounded-[1.35rem] border border-[var(--accent-border)] bg-[var(--accent-bg-card)] p-5">
                 <p className="text-sm font-medium text-[var(--foreground)]">
                   {decision.title}
                 </p>
@@ -100,7 +100,10 @@ export default function CaseStudyCard({
               href={`/projects/${caseStudy.slug}`}
               className="inline-flex items-center gap-3 rounded-full bg-[var(--accent-strong)] px-5 py-3 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">
               Read case study
-              <BsArrowRight className="text-xs" />
+              <BsArrowRight
+                className="text-xs"
+                aria-hidden="true"
+              />
             </Link>
 
             {caseStudy.links.map((link) => (
@@ -111,30 +114,35 @@ export default function CaseStudyCard({
                 rel="noreferrer"
                 className="inline-flex items-center gap-3 rounded-full border border-[var(--line)] px-5 py-3 text-sm font-medium text-[var(--foreground)] transition-colors duration-200 hover:border-[var(--accent)] hover:text-[var(--accent-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">
                 {link.label}
-                <BsArrowUpRight className="text-xs" />
+                <BsArrowUpRight
+                  className="text-xs"
+                  aria-hidden="true"
+                />
               </a>
             ))}
           </div>
         </div>
 
-        <motion.div
-          style={{ y: mediaY }}
-          className={cn("relative", isEven && "lg:order-1")}>
-          <div className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[0_18px_50px_rgba(15,20,18,0.08)]">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-[color:rgba(20,67,61,0.12)]">
-              <Image
-                src={caseStudy.media[0].src}
-                alt={caseStudy.media[0].alt}
-                fill
-                sizes="(min-width: 1024px) 40rem, 100vw"
-                className="object-cover"
-              />
+        {caseStudy.media.length > 0 && (
+          <motion.div
+            style={{ y: mediaY }}
+            className={cn("relative", isEven && "lg:order-1")}>
+            <div className="overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[0_18px_50px_rgba(15,20,18,0.08)]">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-[var(--accent-border)]">
+                <Image
+                  src={caseStudy.media[0].src}
+                  alt={caseStudy.media[0].alt}
+                  fill
+                  sizes="(min-width: 1024px) 40rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
+                {caseStudy.media[0].caption}
+              </p>
             </div>
-            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-              {caseStudy.media[0].caption}
-            </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </motion.article>
   );

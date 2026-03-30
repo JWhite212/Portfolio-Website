@@ -59,7 +59,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     <>
       <StructuredData data={buildCaseStudyStructuredData(caseStudy)} />
 
-      <main className="px-4 pb-20 pt-32 sm:px-6 lg:px-10 lg:pb-24 lg:pt-36">
+      <main
+        id="main-content"
+        className="px-4 pb-20 pt-32 sm:px-6 lg:px-10 lg:pb-24 lg:pt-36">
         <div className="mx-auto max-w-[88rem]">
           <Link
             href="/#projects"

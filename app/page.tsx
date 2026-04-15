@@ -158,9 +158,9 @@ export default function Home() {
 
         <section
           id="experience"
-          className="border-t border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
+          className="border-y border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
-          <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
+          <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
             <Reveal>
               <SectionIntro
                 eyebrow="Experience and education"

@@ -1,6 +1,7 @@
 "use client";
 
 import { sendEmail } from "@/actions/sendEmail";
+import MagneticButton from "@/components/magnetic-button";
 import type { ContactFormState } from "@/lib/types";
 import { EMAIL_MAX_LENGTH, MESSAGE_MAX_LENGTH, cn } from "@/lib/utils";
 import { useEffect, useRef } from "react";
@@ -15,20 +16,22 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button
-      type="submit"
-      disabled={pending}
-      className={cn(
-        "inline-flex items-center justify-center gap-3 rounded-full px-5 py-3 text-sm font-medium transition-all duration-200",
-        "bg-[var(--accent-strong)] text-white hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]",
-        "disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70",
-      )}>
-      {pending ? "Sending..." : "Send message"}
-      <BsArrowRight
-        className="text-xs"
-        aria-hidden="true"
-      />
-    </button>
+    <MagneticButton>
+      <button
+        type="submit"
+        disabled={pending}
+        className={cn(
+          "inline-flex items-center justify-center gap-3 px-5 py-3 text-sm font-bold transition-all duration-200",
+          "bg-[var(--accent)] text-[var(--background)] hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+        )}>
+        {pending ? "Sending..." : "Send message"}
+        <BsArrowRight
+          className="text-xs"
+          aria-hidden="true"
+        />
+      </button>
+    </MagneticButton>
   );
 }
 
@@ -47,12 +50,12 @@ export default function ContactForm() {
       ref={formRef}
       action={formAction}
       aria-label="Contact form"
-      className="space-y-4 rounded-[1.75rem] border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[0_16px_40px_rgba(15,20,18,0.05)]">
+      className="space-y-6 border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-6">
       <div>
         <label
           htmlFor="senderEmail"
-          className="block text-sm font-medium text-[var(--foreground)]">
-          Email
+          className="block font-mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+          &gt; Email
         </label>
         <input
           id="senderEmail"
@@ -67,8 +70,8 @@ export default function ContactForm() {
             state.fieldErrors?.senderEmail ? "senderEmail-error" : undefined
           }
           className={cn(
-            "mt-2 h-12 w-full rounded-2xl border bg-white px-4 text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition-colors",
-            "border-[var(--line)] focus:border-[var(--accent)]",
+            "mt-2 h-12 w-full border-b-brutal bg-transparent px-0 font-mono text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition-colors",
+            "border-[var(--line-strong)] focus:border-[var(--accent)]",
             state.fieldErrors?.senderEmail &&
               "border-[var(--error)] focus:border-[var(--error)]",
           )}
@@ -77,8 +80,8 @@ export default function ContactForm() {
         {state.fieldErrors?.senderEmail ? (
           <p
             id="senderEmail-error"
-            className="mt-2 text-sm text-[var(--error)]">
-            {state.fieldErrors.senderEmail}
+            className="mt-2 font-mono text-xs text-[var(--error)]">
+            [ERR] {state.fieldErrors.senderEmail}
           </p>
         ) : null}
       </div>
@@ -99,8 +102,8 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-[var(--foreground)]">
-          Message
+          className="block font-mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+          &gt; Message
         </label>
         <textarea
           id="message"
@@ -113,8 +116,8 @@ export default function ContactForm() {
             state.fieldErrors?.message ? "message-error" : undefined
           }
           className={cn(
-            "mt-2 w-full rounded-2xl border bg-white px-4 py-3 text-sm leading-7 text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition-colors",
-            "border-[var(--line)] focus:border-[var(--accent)]",
+            "mt-2 w-full border-b-brutal bg-transparent px-0 py-3 font-mono text-sm leading-7 text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition-colors",
+            "border-[var(--line-strong)] focus:border-[var(--accent)]",
             state.fieldErrors?.message &&
               "border-[var(--error)] focus:border-[var(--error)]",
           )}
@@ -123,24 +126,28 @@ export default function ContactForm() {
         {state.fieldErrors?.message ? (
           <p
             id="message-error"
-            className="mt-2 text-sm text-[var(--error)]">
-            {state.fieldErrors.message}
+            className="mt-2 font-mono text-xs text-[var(--error)]">
+            [ERR] {state.fieldErrors.message}
           </p>
         ) : null}
       </div>
 
-      <div className="flex items-center justify-between gap-4 border-t border-[var(--line)] pt-4">
+      <div className="flex items-center justify-between gap-4 border-t-brutal border-[var(--line-strong)] pt-4">
         <p
           className={cn(
-            "text-sm leading-7",
+            "font-mono text-xs leading-7",
             state.status === "error"
-              ? "text-[var(--error-strong)]"
+              ? "text-[var(--error)]"
               : state.status === "success"
-                ? "text-[var(--accent-strong)]"
+                ? "text-[var(--accent)]"
                 : "text-[var(--muted)]",
           )}
           aria-live="polite">
-          {state.message ?? "Your message goes directly to my inbox."}
+          {state.status === "success"
+            ? "[OK] " + state.message
+            : state.status === "error"
+              ? "[ERR] " + state.message
+              : "// Your message goes directly to my inbox."}
         </p>
         <SubmitButton />
       </div>

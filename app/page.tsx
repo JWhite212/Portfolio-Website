@@ -1,9 +1,11 @@
 import CaseStudyCard from "@/components/case-study-card";
 import ContactForm from "@/components/contact-form";
 import HeroSection from "@/components/hero-section";
+import Marquee from "@/components/marquee";
 import Reveal from "@/components/reveal";
 import SectionIntro from "@/components/section-intro";
 import StructuredData from "@/components/structured-data";
+import TextScramble from "@/components/text-scramble";
 import {
   contactConfig,
   contactLinks,
@@ -18,6 +20,8 @@ import { BsArrowUpRight } from "react-icons/bs";
 
 const featuredCaseStudies = getFeaturedCaseStudies();
 
+const allSkills = skillsByGroup.flatMap((g) => g.skills);
+
 export default function Home() {
   return (
     <>
@@ -26,20 +30,27 @@ export default function Home() {
       <main>
         <HeroSection />
 
+        {/* Proof Points */}
         <section
           aria-label="Professional highlights"
-          className="border-b border-[var(--line)] px-4 py-10 sm:px-6 lg:px-10">
-          <div className="mx-auto grid max-w-[88rem] gap-4 lg:grid-cols-3">
+          className="border-b-brutal border-[var(--line-strong)] px-4 py-10 sm:px-6 lg:px-10">
+          <div className="mx-auto grid max-w-[88rem] gap-0 border-brutal border-[var(--line-strong)] lg:grid-cols-3">
             {profile.proofPoints.map((point, index) => (
               <Reveal
                 key={point.label}
                 delay={index * 0.06}
-                className="rounded-[1.6rem] border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[0_12px_36px_rgba(15,20,18,0.04)]">
+                className={cn(
+                  "border-b border-[var(--line)] bg-[var(--surface)] p-6 last:border-b-0 lg:border-b-0 lg:border-r lg:last:border-r-0",
+                )}>
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-[var(--muted)]">
                   {point.label}
                 </p>
-                <p className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-[var(--foreground)]">
-                  {point.value}
+                <p className="mt-4 font-display text-2xl font-bold tracking-[-0.04em] text-[var(--foreground)]">
+                  <TextScramble
+                    text={point.value}
+                    trigger="mount"
+                    speed={35}
+                  />
                 </p>
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                   {point.detail}
@@ -49,13 +60,27 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Marquee Divider */}
+        <Marquee className="py-4 text-sm font-bold uppercase tracking-[0.3em] text-[var(--muted)]">
+          {allSkills.map((skill) => (
+            <span
+              key={skill}
+              className="whitespace-nowrap">
+              {skill}
+              <span className="mx-4 text-[var(--accent)]">/</span>
+            </span>
+          ))}
+        </Marquee>
+
+        {/* Projects */}
         <section
           id="projects"
-          className="px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
+          className="border-t-brutal-thick border-[var(--accent)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
           <div className="mx-auto max-w-[88rem]">
             <Reveal>
               <SectionIntro
+                index={1}
                 eyebrow="Featured work"
                 title="Three projects that best represent how I think and build."
                 body="These are the strongest examples of my technical judgement right now: one cross-disciplinary systems prototype, one fundamentals-heavy Java build, and one product-facing platform I designed around clearer storytelling and stronger implementation quality."
@@ -74,13 +99,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Approach */}
         <section
           id="approach"
-          className="border-y border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
+          className="border-y-brutal border-[var(--line-strong)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
           <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
             <Reveal>
               <SectionIntro
+                index={2}
                 eyebrow="Engineering approach"
                 title="I prefer clear structure, honest tradeoffs, and work that still reads well after the deadline."
                 body="The strongest thread through my projects is not a single framework. It is the way I work: model the problem carefully, choose tools deliberately, and carry the quality bar through to the final interface and behaviour."
@@ -90,7 +117,7 @@ export default function Home() {
             <div className="grid gap-6">
               <Reveal
                 delay={0.05}
-                className="rounded-[1.9rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
+                className="border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-6 sm:p-8">
                 <div className="space-y-5 text-base leading-8 text-[var(--muted)]">
                   {profile.about.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
@@ -100,15 +127,16 @@ export default function Home() {
 
               <Reveal
                 delay={0.1}
-                className="rounded-[1.9rem] border border-[var(--line)] bg-[color:rgba(20,67,61,0.08)] p-6 sm:p-8">
-                <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--accent-strong)]">
-                  What I optimise for
+                className="border-brutal border-[var(--line-strong)] bg-[var(--accent-muted)] p-6 sm:p-8">
+                <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--accent)]">
+                  &gt; What I optimise for
                 </p>
-                <ul className="mt-5 grid gap-4 sm:grid-cols-2">
+                <ul className="mt-5 space-y-0">
                   {profile.principles.map((principle) => (
                     <li
                       key={principle}
-                      className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.14)] bg-[color:rgba(255,255,255,0.74)] px-4 py-4 text-sm leading-7 text-[var(--foreground)]">
+                      className="border-t border-[var(--line)] py-3 text-sm leading-7 text-[var(--foreground)] first:border-t-0">
+                      <span className="text-[var(--accent)]">&gt;</span>{" "}
                       {principle}
                     </li>
                   ))}
@@ -118,10 +146,12 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Skills */}
         <section className="px-4 py-20 sm:px-6 lg:px-10 lg:py-24">
           <div className="mx-auto max-w-[88rem]">
             <Reveal>
               <SectionIntro
+                index={3}
                 eyebrow="Skill groups"
                 title="A practical stack shaped more by delivery than by trend-chasing."
                 body="I learn tools in context: enough depth to use them responsibly, enough range to move between interface, logic, and data concerns when the project demands it."
@@ -129,12 +159,16 @@ export default function Home() {
               />
             </Reveal>
 
-            <div className="mt-14 grid gap-5 lg:grid-cols-2">
+            <div className="mt-14 grid gap-0 border-brutal border-[var(--line-strong)] lg:grid-cols-2">
               {skillsByGroup.map((group, index) => (
                 <Reveal
                   key={group.title}
                   delay={index * 0.06}
-                  className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
+                  className={cn(
+                    "border-b border-[var(--line)] bg-[var(--surface)] p-6 last:border-b-0 sm:p-8",
+                    "lg:border-b-0 lg:border-r lg:odd:border-r lg:last:border-r-0",
+                    index < 2 && "lg:border-b",
+                  )}>
                   <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-[var(--muted)]">
                     {group.title}
                   </p>
@@ -145,7 +179,7 @@ export default function Home() {
                     {group.skills.map((skill) => (
                       <li
                         key={skill}
-                        className="rounded-full border border-[color:rgba(20,67,61,0.14)] bg-white px-3.5 py-2 text-sm text-[var(--foreground)]">
+                        className="border-brutal border-[var(--line-strong)] bg-transparent px-3 py-1.5 text-sm text-[var(--foreground)] transition-colors duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent)] hover:text-[var(--background)]">
                         {skill}
                       </li>
                     ))}
@@ -156,13 +190,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Experience */}
         <section
           id="experience"
-          className="border-y border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
+          className="border-y-brutal border-[var(--line-strong)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
           <div className="mx-auto max-w-[88rem]">
             <Reveal>
               <SectionIntro
+                index={4}
                 eyebrow="Experience and education"
                 title="From customer-facing roles to engineering solutions that ship."
                 body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
@@ -170,30 +206,31 @@ export default function Home() {
             </Reveal>
 
             <div className="mt-14 grid gap-8 lg:grid-cols-2">
+              {/* Education */}
               <Reveal
                 delay={0.05}
-                className="self-start rounded-[1.85rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
+                className="self-start">
                 <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--muted)]">
                   Education
                 </p>
-                <div className="mt-6 space-y-5">
+                <div className="mt-6 space-y-0">
                   {education.map((item) => (
                     <article
                       key={item.title}
-                      className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-white px-5 py-5">
+                      className="border-l-[3px] border-[var(--accent)] border-b border-b-[var(--line)] py-5 pl-5 last:border-b-0">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <h3 className="text-lg font-bold text-[var(--foreground)]">
+                          <h3 className="font-display text-lg font-bold text-[var(--foreground)]">
                             {item.title}
                           </h3>
-                          <h4 className="text-m font-semibold text-[var(--foreground)]">
+                          <h4 className="text-sm font-semibold text-[var(--foreground)]">
                             {item.grade}
                           </h4>
                           <p className="mt-1 text-sm text-[var(--muted)]">
                             {item.institution}
                           </p>
                         </div>
-                        <span className="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-[var(--muted)]">
+                        <span className="bg-[var(--accent)] px-2 py-1 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--background)]">
                           {item.period}
                         </span>
                       </div>
@@ -205,38 +242,38 @@ export default function Home() {
                 </div>
               </Reveal>
 
-              <Reveal
-                delay={0.1}
-                className="rounded-[1.85rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
+              {/* Professional experience */}
+              <Reveal delay={0.1}>
                 <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--muted)]">
                   Professional experience
                 </p>
-                <div className="mt-6 space-y-5">
+                <div className="mt-6 space-y-0">
                   {experience.map((item) => (
                     <article
                       key={`${item.title}-${item.period}`}
-                      className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-white px-5 py-5">
+                      className="border-l-[3px] border-[var(--accent)] border-b border-b-[var(--line)] py-5 pl-5 last:border-b-0">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                          <h3 className="font-display text-base font-bold text-[var(--foreground)]">
                             {item.title}
                           </h3>
                           <p className="mt-1 text-sm text-[var(--muted)]">
                             {item.organisation} / {item.location}
                           </p>
                         </div>
-                        <span className="font-mono text-[0.72rem] uppercase tracking-[0.24em] text-[var(--muted)]">
+                        <span className="bg-[var(--accent)] px-2 py-1 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-[var(--background)]">
                           {item.period}
                         </span>
                       </div>
                       <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
                         {item.summary}
                       </p>
-                      <ul className="mt-4 grid gap-2">
+                      <ul className="mt-4 grid gap-1.5">
                         {item.highlights.map((highlight) => (
                           <li
                             key={highlight}
                             className="text-sm leading-7 text-[var(--foreground)]">
+                            <span className="text-[var(--muted)]">//</span>{" "}
                             {highlight}
                           </li>
                         ))}
@@ -249,13 +286,15 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Contact */}
         <section
           id="contact"
-          className="border-t border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
+          className="px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
           <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
             <Reveal>
               <SectionIntro
+                index={5}
                 eyebrow="Contact"
                 title="If the work here feels relevant, I would be glad to talk."
                 body={contactConfig.formIntro}
@@ -273,14 +312,14 @@ export default function Home() {
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noreferrer" : undefined}
                     className={cn(
-                      "group rounded-[1.35rem] border border-[var(--line)] bg-[var(--surface)] px-5 py-5 transition-colors duration-200",
-                      "hover:border-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]",
+                      "group border-brutal border-[var(--line-strong)] bg-[var(--surface)] px-5 py-5 transition-all duration-200",
+                      "hover:border-[var(--accent)] hover:shadow-[0_0_20px_var(--accent-dim)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]",
                     )}>
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-base font-medium text-[var(--foreground)]">
                         {link.label}
                       </span>
-                      <BsArrowUpRight className="text-xs text-[var(--muted)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      <BsArrowUpRight className="text-xs text-[var(--muted)] transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]" />
                     </div>
                     <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
                       {link.description}

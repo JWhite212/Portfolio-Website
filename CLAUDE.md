@@ -25,17 +25,18 @@ npm run fix          # Auto-fix formatting + lint
 
 ## Environment Variables
 
-| Variable | Required | Purpose |
-|----------|----------|---------|
-| `RESEND_API_KEY` | Production | Resend email delivery |
-| `PORTFOLIO_CONTACT_FROM` | Production | Sender address for contact emails |
-| `PORTFOLIO_CONTACT_TO` | Production | Recipient address for contact emails |
-| `NEXT_PUBLIC_SITE_URL` | Optional | Canonical site URL (defaults to localhost:3000) |
+| Variable                 | Required   | Purpose                                         |
+| ------------------------ | ---------- | ----------------------------------------------- |
+| `RESEND_API_KEY`         | Production | Resend email delivery                           |
+| `PORTFOLIO_CONTACT_FROM` | Production | Sender address for contact emails               |
+| `PORTFOLIO_CONTACT_TO`   | Production | Recipient address for contact emails            |
+| `NEXT_PUBLIC_SITE_URL`   | Optional   | Canonical site URL (defaults to localhost:3000) |
 
 ## Code Style
 
 - Path alias: `@/*` maps to repo root
-- Fonts: Space Grotesk (`--font-space-grotesk`, sans) and IBM Plex Mono (`--font-ibm-plex-mono`, mono)
-- CSS variables for theming: `--background`, `--foreground`, `--line`, `--surface`, `--muted`, `--accent`, `--accent-strong`
-- Framer Motion `<Reveal>` wrapper for scroll animations
+- Fonts: JetBrains Mono (`--font-jetbrains-mono`, mono body) and Space Mono (`--font-space-mono`, display headings)
+- CSS variables for theming: `--background`, `--foreground`, `--line`, `--line-strong`, `--surface`, `--surface-elevated`, `--muted`, `--accent`, `--accent-dim`, `--accent-muted`
+- Brutalist design: dark palette (#0a0a0a), electric green accent (#39ff14), sharp corners, thick borders
+- Framer Motion `<Reveal>` wrapper for scroll animations, plus `<SplitText>`, `<TextScramble>`, `<MagneticButton>`, `<CustomCursor>`, `<GlitchImage>`, `<Marquee>` effect components
 - Prettier + ESLint enforced; run `npm run check` before committing

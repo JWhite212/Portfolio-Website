@@ -169,10 +169,10 @@ export default function Home() {
               />
             </Reveal>
 
-            <div className="grid gap-8 xl:grid-cols-2">
+            <div className="grid gap-8 lg:grid-cols-2">
               <Reveal
                 delay={0.05}
-                className="rounded-[1.85rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
+                className="self-start rounded-[1.85rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">
                 <p className="font-mono text-[0.72rem] uppercase tracking-[0.28em] text-[var(--muted)]">
                   Education
                 </p>

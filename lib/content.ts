@@ -114,7 +114,13 @@ export const caseStudies: CaseStudy[] = [
       "Strengthened my confidence working across disciplines where software decisions have direct real-world effects.",
       "Created a case study that shows curiosity beyond standard CRUD applications.",
     ],
-    links: [],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/JWhite212/Automatic-IOT-Plant-Watering-System",
+        kind: "repository",
+      },
+    ],
     media: [
       {
         src: plantSystemImg,
@@ -124,6 +130,8 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     featured: true,
+    githubUrl:
+      "https://github.com/JWhite212/Automatic-IOT-Plant-Watering-System",
   },
   {
     slug: "java-vending-machine",
@@ -168,7 +176,13 @@ export const caseStudies: CaseStudy[] = [
       "Reinforced habits around modelling, readability, and testability that transfer directly into production codebases.",
       "Created a useful example of how I think about code quality beyond just shipping features.",
     ],
-    links: [],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/JWhite212/VendingMachine",
+        kind: "repository",
+      },
+    ],
     media: [
       {
         src: vendingMachineImg,
@@ -178,6 +192,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     featured: true,
+    githubUrl: "https://github.com/JWhite212/VendingMachine",
   },
   {
     slug: "portfolio-platform-redesign",
@@ -240,6 +255,57 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     featured: true,
+    githubUrl: "https://github.com/JWhite212/Portfolio-Website",
+  },
+  {
+    slug: "meeting-mind",
+    title: "Meeting Mind",
+    summary:
+      "A macOS daemon that auto-detects Microsoft Teams meetings, transcribes audio locally using faster-whisper, and produces structured meeting summaries via the Claude API.",
+    role: "Solo developer",
+    period: "2026",
+    problem:
+      "Manually taking notes during meetings is distracting and produces inconsistent records. Existing transcription tools require manual setup or send audio to external servers.",
+    approach: [
+      "Built a background macOS daemon that monitors for active Teams meetings using system APIs.",
+      "Integrated faster-whisper for efficient local audio transcription, keeping all data on-device.",
+      "Connected to the Claude API to produce structured summaries with action items from raw transcripts.",
+    ],
+    technicalDecisions: [
+      {
+        title: "Local-first transcription",
+        detail:
+          "Chose faster-whisper over cloud transcription APIs to keep meeting audio entirely on-device, addressing privacy concerns for sensitive business discussions.",
+      },
+      {
+        title: "Claude API for summarisation",
+        detail:
+          "Used Claude to extract structured summaries, action items, and key decisions from raw transcripts, producing more useful output than simple transcription alone.",
+      },
+    ],
+    stack: ["Python", "Claude API", "faster-whisper", "macOS", "Daemon"],
+    outcome: [
+      "Fully automated meeting transcription and summarisation pipeline.",
+      "All audio processing happens locally, preserving meeting confidentiality.",
+      "Structured output includes action items, decisions, and attendee contributions.",
+    ],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/JWhite212/meeting-mind",
+        kind: "repository",
+      },
+    ],
+    media: [
+      {
+        src: portfolioPreview,
+        alt: "Meeting Mind application overview",
+        caption:
+          "Meeting Mind — automated meeting transcription and summarisation.",
+      },
+    ],
+    featured: false,
+    githubUrl: "https://github.com/JWhite212/meeting-mind",
   },
 ];
 

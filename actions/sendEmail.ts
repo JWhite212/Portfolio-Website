@@ -4,6 +4,7 @@ import ContactFormEmail from "@/email/contact-form-email";
 import { contactConfig } from "@/lib/content";
 import type { ContactFormState } from "@/lib/types";
 import {
+  EMAIL_MAX_LENGTH,
   getErrorMessage,
   MESSAGE_MAX_LENGTH,
   validateEmail,
@@ -11,6 +12,29 @@ import {
 } from "@/lib/utils";
 import React from "react";
 import { Resend } from "resend";
+
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const rateLimitMap = new Map<string, number[]>();
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now();
+  const timestamps = rateLimitMap.get(key) ?? [];
+  const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
+
+  if (recent.length === 0) {
+    rateLimitMap.delete(key);
+  }
+
+  if (recent.length >= RATE_LIMIT_MAX) {
+    rateLimitMap.set(key, recent);
+    return true;
+  }
+
+  recent.push(now);
+  rateLimitMap.set(key, recent);
+  return false;
+}
 
 function getContactRuntimeConfig() {
   const isProduction = process.env.NODE_ENV === "production";
@@ -81,6 +105,33 @@ export async function sendEmail(
     };
   }
 
+  const safeSenderEmail =
+    typeof senderEmail === "string" ? senderEmail.trim() : "";
+  const safeMessage = typeof message === "string" ? message.trim() : "";
+
+  if (safeSenderEmail.length > EMAIL_MAX_LENGTH) {
+    return {
+      status: "error",
+      message: "Email address is too long.",
+      fieldErrors: { senderEmail: "Email address exceeds maximum length." },
+    };
+  }
+
+  if (safeMessage.length > MESSAGE_MAX_LENGTH) {
+    return {
+      status: "error",
+      message: "Message is too long.",
+      fieldErrors: { message: "Message exceeds maximum length." },
+    };
+  }
+
+  if (isRateLimited(safeSenderEmail)) {
+    return {
+      status: "error",
+      message: "Too many messages sent. Please try again later.",
+    };
+  }
+
   const runtimeConfig = getContactRuntimeConfig();
 
   if ("error" in runtimeConfig) {
@@ -99,10 +150,6 @@ export async function sendEmail(
         "Email delivery is not configured in this environment. You can still reach me directly by email.",
     };
   }
-
-  const safeSenderEmail =
-    typeof senderEmail === "string" ? senderEmail.trim() : "";
-  const safeMessage = typeof message === "string" ? message.trim() : "";
 
   try {
     await resend.emails.send({

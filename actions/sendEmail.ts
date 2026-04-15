@@ -1,6 +1,5 @@
 "use server";
 
-import ContactFormEmail from "@/email/contact-form-email";
 import { contactConfig } from "@/lib/content";
 import type { ContactFormState } from "@/lib/types";
 import {
@@ -10,7 +9,6 @@ import {
   validateEmail,
   validateString,
 } from "@/lib/utils";
-import React from "react";
 import { Resend } from "resend";
 
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
@@ -69,6 +67,41 @@ function getResendClient() {
   }
 
   return new Resend(process.env.RESEND_API_KEY);
+}
+
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function buildEmailHtml(senderEmail: string, message: string): string {
+  const safeEmail = escapeHtml(senderEmail);
+  const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+
+  return `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New portfolio enquiry</title>
+  </head>
+  <body style="margin:0;padding:40px 24px;background:#f2eee6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#151a19;">
+    <div style="max-width:620px;margin:0 auto;background:#ffffff;border:1px solid #d5d0c6;border-radius:24px;padding:32px;">
+      <p style="margin:0;font-size:11px;letter-spacing:0.35em;text-transform:uppercase;color:#5d635f;">Portfolio enquiry</p>
+      <h1 style="margin:16px 0 0 0;font-size:28px;font-weight:600;line-height:1.15;color:#151a19;">New message from the portfolio contact form</h1>
+      <p style="margin:16px 0 0 0;font-size:15px;line-height:1.6;color:#47504b;">Sender: <strong>${safeEmail}</strong></p>
+      <hr style="margin:24px 0;border:none;border-top:1px solid #d5d0c6;">
+      <p style="margin:0;font-size:15px;line-height:1.75;color:#151a19;">${safeMessage}</p>
+    </div>
+  </body>
+</html>`;
+}
+
+function buildEmailText(senderEmail: string, message: string): string {
+  return `New message from the portfolio contact form\n\nSender: ${senderEmail}\n\n---\n\n${message}`;
 }
 
 export async function sendEmail(
@@ -157,10 +190,8 @@ export async function sendEmail(
       to: runtimeConfig.to,
       subject: "New portfolio enquiry",
       replyTo: safeSenderEmail,
-      react: React.createElement(ContactFormEmail, {
-        message: safeMessage,
-        senderEmail: safeSenderEmail,
-      }),
+      html: buildEmailHtml(safeSenderEmail, safeMessage),
+      text: buildEmailText(safeSenderEmail, safeMessage),
     });
 
     if (result.error) {

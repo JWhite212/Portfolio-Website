@@ -1,4 +1,7 @@
 import portfolioPreview from "@/public/corpcomment.png";
+import meetingMindDashboardImg from "@/public/meetingMindDashboardScreen.png";
+import meetingMindMeetingsImg from "@/public/meetingMindMeetingsScreen.png";
+import meetingMindRecordImg from "@/public/meetingMindManualRecordScreen.png";
 import plantSystemImg from "@/public/plantSystem.jpg";
 import vendingMachineImg from "@/public/vendingMachine.png";
 import type {
@@ -69,6 +72,84 @@ export const profile: Profile = {
 };
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "meeting-mind",
+    title: "Meeting Mind",
+    summary:
+      "A Tauri v2 desktop application that automatically detects Microsoft Teams meetings, captures dual audio sources, transcribes locally with faster-whisper, and generates AI-powered summaries — all without sending audio off-device.",
+    role: "Solo developer",
+    period: "Personal project",
+    problem:
+      "Taking manual notes during meetings splits your attention between listening and writing, producing inconsistent records that miss key decisions. Existing transcription tools either require visible bot participants that change how people behave in meetings, or stream raw audio to external servers — a non-starter for sensitive business discussions. I wanted a tool that could capture, transcribe, and summarise meetings completely in the background, with local-first processing that keeps confidential audio on the machine.",
+    approach: [
+      "Designed the system as a Python daemon (FastAPI on localhost) paired with a Tauri v2 desktop app. The daemon monitors for active Teams calls and automatically begins dual audio capture — system audio via BlackHole virtual driver for remote speakers and microphone input for the user — then merges both streams with RMS normalisation.",
+      "Built the transcription pipeline around faster-whisper with a CTranslate2 backend for efficient on-device speech-to-text. Added energy-based speaker diarisation to distinguish the user from remote participants, producing speaker-labelled timestamped transcripts without any network traffic.",
+      "Connected the transcript output to either a local Ollama instance or the Claude API for structured summarisation. The system generates meeting summaries with action items, key decisions, and attendee contributions, then exports to Markdown with YAML frontmatter (optimised for Obsidian) or directly to Notion databases.",
+    ],
+    technicalDecisions: [
+      {
+        title: "Tauri v2 with React and TypeScript frontend",
+        detail:
+          "Chose Tauri over Electron for a significantly smaller binary size and native Rust performance. The React frontend provides a polished interface with real-time audio meters, streaming transcripts, waveform visualisation, and a command palette (Cmd+K) — all styled with Tailwind CSS and managed with Zustand state.",
+      },
+      {
+        title: "Local-first transcription with faster-whisper",
+        detail:
+          "Runs the entire speech-to-text pipeline on-device using faster-whisper's CTranslate2 backend, avoiding cloud transcription APIs entirely. This keeps all meeting audio on the machine, addresses privacy requirements for sensitive discussions, and eliminates per-minute API costs.",
+      },
+      {
+        title: "Dual audio capture via BlackHole",
+        detail:
+          "Captures both system audio (remote speakers) and microphone input through separate channels using the BlackHole virtual audio driver on macOS. The streams are merged post-capture with RMS normalisation, producing clean mixed audio without requiring participants to install anything.",
+      },
+    ],
+    stack: [
+      "Tauri v2",
+      "Rust",
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "faster-whisper",
+      "Claude API",
+      "SQLite",
+      "Tailwind CSS",
+    ],
+    outcome: [
+      "Shipped a fully automated meeting pipeline — from detection through transcription to structured summary — that runs invisibly in the background with zero manual setup per meeting.",
+      "All audio capture and transcription stays on-device, making the tool suitable for confidential discussions where cloud-based alternatives are not appropriate.",
+      "Built a polished desktop application with live audio meters, streaming transcripts, full-text search across meeting history, waveform playback, and multiple export formats including Obsidian-compatible Markdown and native Notion pages.",
+    ],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/JWhite212/meeting-mind",
+        kind: "repository",
+      },
+    ],
+    media: [
+      {
+        src: meetingMindDashboardImg,
+        alt: "Meeting Mind dashboard showing live recording interface with audio meters and transcript",
+        caption:
+          "The main dashboard during an active recording — real-time audio levels, streaming transcript, and meeting controls.",
+      },
+      {
+        src: meetingMindMeetingsImg,
+        alt: "Meeting Mind meetings list with search and meeting history",
+        caption:
+          "Meeting history view with full-text search across all transcripts and summaries.",
+      },
+      {
+        src: meetingMindRecordImg,
+        alt: "Meeting Mind manual recording interface with waveform visualisation",
+        caption:
+          "Manual recording mode with waveform visualisation and speaker-labelled playback controls.",
+      },
+    ],
+    featured: true,
+    githubUrl: "https://github.com/JWhite212/meeting-mind",
+  },
   {
     slug: "automatic-plant-watering-system",
     title: "Automatic IoT Plant Watering System",
@@ -256,56 +337,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     featured: true,
     githubUrl: "https://github.com/JWhite212/Portfolio-Website",
-  },
-  {
-    slug: "meeting-mind",
-    title: "Meeting Mind",
-    summary:
-      "A macOS daemon that auto-detects Microsoft Teams meetings, transcribes audio locally using faster-whisper, and produces structured meeting summaries via the Claude API.",
-    role: "Solo developer",
-    period: "2026",
-    problem:
-      "Manually taking notes during meetings is distracting and produces inconsistent records. Existing transcription tools require manual setup or send audio to external servers.",
-    approach: [
-      "Built a background macOS daemon that monitors for active Teams meetings using system APIs.",
-      "Integrated faster-whisper for efficient local audio transcription, keeping all data on-device.",
-      "Connected to the Claude API to produce structured summaries with action items from raw transcripts.",
-    ],
-    technicalDecisions: [
-      {
-        title: "Local-first transcription",
-        detail:
-          "Chose faster-whisper over cloud transcription APIs to keep meeting audio entirely on-device, addressing privacy concerns for sensitive business discussions.",
-      },
-      {
-        title: "Claude API for summarisation",
-        detail:
-          "Used Claude to extract structured summaries, action items, and key decisions from raw transcripts, producing more useful output than simple transcription alone.",
-      },
-    ],
-    stack: ["Python", "Claude API", "faster-whisper", "macOS", "Daemon"],
-    outcome: [
-      "Fully automated meeting transcription and summarisation pipeline.",
-      "All audio processing happens locally, preserving meeting confidentiality.",
-      "Structured output includes action items, decisions, and attendee contributions.",
-    ],
-    links: [
-      {
-        label: "Repository",
-        href: "https://github.com/JWhite212/meeting-mind",
-        kind: "repository",
-      },
-    ],
-    media: [
-      {
-        src: portfolioPreview,
-        alt: "Meeting Mind application overview",
-        caption:
-          "Meeting Mind — automated meeting transcription and summarisation.",
-      },
-    ],
-    featured: false,
-    githubUrl: "https://github.com/JWhite212/meeting-mind",
   },
 ];
 

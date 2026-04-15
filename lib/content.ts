@@ -246,7 +246,7 @@ export const caseStudies: CaseStudy[] = [
 export const education: EducationItem[] = [
   {
     title: "Advanced Computer Science, MSc",
-    grade: "Distinction",
+    grade: "Achieved: Distinction",
     institution: "University of Kent",
     period: "Postgraduate study",
     summary:
@@ -254,7 +254,7 @@ export const education: EducationItem[] = [
   },
   {
     title: "Computer Science, BSc (Hons)",
-    grade: "Upper Second Class Honours (2:1)",
+    grade: "Achieved: Upper Second Class Honours (2:1)",
     institution: "University of Kent",
     period: "Undergraduate foundation",
     summary:
@@ -290,15 +290,26 @@ export const experience: ExperienceItem[] = [
       "Maintained composure and helpfulness during peak trading periods.",
     ],
   },
+<<<<<<< HEAD
   {
+=======
+   {
+>>>>>>> a8f77a7cfaf370a033ad9d323da9ed5ce50fdf86
     title: "Field Sales Representative",
     organisation: "toob",
     location: "Farnborough, England",
     period: "May 2024 – Aug 2024",
+<<<<<<< HEAD
     summary:
       "Full-time field sales role promoting broadband services directly to customers, combining persuasive communication with product knowledge.",
     highlights: [
       "Engaged prospective customers face-to-face to explain product benefits and close sales.",
+=======
+    summary: "Full-time field sales role promoting broadband services directly to customers combining persuasive communication with product knowledge.",
+
+    highlights: [
+     "Engaged prospective customers face-to-face to explain product benefits and close sales.",
+>>>>>>> a8f77a7cfaf370a033ad9d323da9ed5ce50fdf86
       "Developed strong interpersonal and objection-handling skills in a target-driven environment.",
     ],
   },
@@ -371,8 +382,12 @@ export const experience: ExperienceItem[] = [
     organisation: "Asda",
     location: "Farnborough, England",
     period: "Apr 2017 – Oct 2018",
+<<<<<<< HEAD
     summary:
       "Part-time retail role providing high levels of customer service and completing tasks collaboratively with the team.",
+=======
+    summary: "Part-time retail role providing high levels of customer service and completing tasks collaboratively with the team.",
+>>>>>>> a8f77a7cfaf370a033ad9d323da9ed5ce50fdf86
     highlights: [
       "Provided attentive customer service and fulfilled customer needs promptly.",
       "Collaborated with the team to complete tasks efficiently.",
@@ -383,10 +398,15 @@ export const experience: ExperienceItem[] = [
     organisation: "Marks and Spencer",
     location: "Surrey, England",
     period: "Dec 2016 – Jan 2017",
+<<<<<<< HEAD
     summary:
       "Supported the clothing section during peak holiday season, assisting customers and ensuring stock availability in a fast-paced environment.",
     highlights: [
       "Assisted customers and organised displays during peak trading periods.",
+=======
+    summary: "Supported the clothing section during peak holiday season, assisting customers and ensuring stock availability in a fast-paced environment.",
+    highlights: [ "Assisted customers and organised displays during peak trading periods.",
+>>>>>>> a8f77a7cfaf370a033ad9d323da9ed5ce50fdf86
       "Delivered friendly, efficient service to enhance the shopping experience.",
     ],
   },

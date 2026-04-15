@@ -40,13 +40,19 @@ export default function HeroSection() {
               href="/#contact"
               className="inline-flex items-center justify-center gap-3 rounded-full bg-[var(--accent-strong)] px-6 py-3.5 text-sm font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">
               Start a conversation
-              <BsArrowRight className="text-xs" />
+              <BsArrowRight
+                className="text-xs"
+                aria-hidden="true"
+              />
             </Link>
             <a
               href={contactConfig.cvHref}
               className="inline-flex items-center justify-center gap-3 rounded-full border border-[var(--line)] px-6 py-3.5 text-sm font-medium text-[var(--foreground)] transition-colors duration-200 hover:border-[var(--accent)] hover:text-[var(--accent-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]">
               Download CV
-              <FiDownload className="text-base" />
+              <FiDownload
+                className="text-base"
+                aria-hidden="true"
+              />
             </a>
           </div>
 
@@ -82,10 +88,11 @@ export default function HeroSection() {
             delay: 0.08,
             ease: [0.22, 1, 0.36, 1],
           }}
+          aria-label="Quick profile overview"
           className="flex items-end lg:justify-end">
           <div className="grid w-full gap-5 lg:max-w-[27rem]">
             <div className="relative overflow-hidden rounded-[2rem] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[0_18px_50px_rgba(15,20,18,0.08)]">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-[color:rgba(20,67,61,0.12)] bg-[linear-gradient(135deg,rgba(20,67,61,0.08),rgba(255,255,255,0.55))]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-[var(--accent-border)] bg-[linear-gradient(135deg,rgba(20,67,61,0.08),rgba(255,255,255,0.55))]">
                 <Image
                   src={avatarImg}
                   alt="Portrait of Jamie White"
@@ -96,7 +103,7 @@ export default function HeroSection() {
                 />
               </div>
 
-              <div className="mt-4 flex items-center justify-between gap-4 rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-[color:rgba(255,255,255,0.72)] px-4 py-3">
+              <div className="mt-4 flex items-center justify-between gap-4 rounded-[1.35rem] border border-[var(--accent-border)] bg-[var(--accent-bg-card)] px-4 py-3">
                 <div>
                   <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-[var(--muted)]">
                     Current focus
@@ -119,7 +126,7 @@ export default function HeroSection() {
                 {profile.quickFacts.map((fact) => (
                   <li
                     key={fact}
-                    className="border-t border-[color:rgba(20,67,61,0.12)] pt-3 first:border-t-0 first:pt-0">
+                    className="border-t border-[var(--accent-border)] pt-3 first:border-t-0 first:pt-0">
                     {fact}
                   </li>
                 ))}

@@ -24,7 +24,10 @@ function SubmitButton() {
         "disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-70",
       )}>
       {pending ? "Sending..." : "Send message"}
-      <BsArrowRight className="text-xs" />
+      <BsArrowRight
+        className="text-xs"
+        aria-hidden="true"
+      />
     </button>
   );
 }
@@ -43,6 +46,7 @@ export default function ContactForm() {
     <form
       ref={formRef}
       action={formAction}
+      aria-label="Contact form"
       className="space-y-4 rounded-[1.75rem] border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[0_16px_40px_rgba(15,20,18,0.05)]">
       <div>
         <label
@@ -59,16 +63,21 @@ export default function ContactForm() {
           maxLength={EMAIL_MAX_LENGTH}
           required
           aria-invalid={Boolean(state.fieldErrors?.senderEmail)}
+          aria-describedby={
+            state.fieldErrors?.senderEmail ? "senderEmail-error" : undefined
+          }
           className={cn(
-            "mt-2 h-12 w-full rounded-2xl border bg-white px-4 text-sm text-[var(--foreground)] outline-none transition-colors",
+            "mt-2 h-12 w-full rounded-2xl border bg-white px-4 text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition-colors",
             "border-[var(--line)] focus:border-[var(--accent)]",
             state.fieldErrors?.senderEmail &&
-              "border-[#b54747] focus:border-[#b54747]",
+              "border-[var(--error)] focus:border-[var(--error)]",
           )}
           placeholder="name@example.com"
         />
         {state.fieldErrors?.senderEmail ? (
-          <p className="mt-2 text-sm text-[#b54747]">
+          <p
+            id="senderEmail-error"
+            className="mt-2 text-sm text-[var(--error)]">
             {state.fieldErrors.senderEmail}
           </p>
         ) : null}
@@ -100,16 +109,21 @@ export default function ContactForm() {
           maxLength={MESSAGE_MAX_LENGTH}
           rows={7}
           aria-invalid={Boolean(state.fieldErrors?.message)}
+          aria-describedby={
+            state.fieldErrors?.message ? "message-error" : undefined
+          }
           className={cn(
-            "mt-2 w-full rounded-[1.5rem] border bg-white px-4 py-3 text-sm leading-7 text-[var(--foreground)] outline-none transition-colors",
+            "mt-2 w-full rounded-2xl border bg-white px-4 py-3 text-sm leading-7 text-[var(--foreground)] placeholder:text-[var(--muted)] outline-none transition-colors",
             "border-[var(--line)] focus:border-[var(--accent)]",
             state.fieldErrors?.message &&
-              "border-[#b54747] focus:border-[#b54747]",
+              "border-[var(--error)] focus:border-[var(--error)]",
           )}
           placeholder="Tell me a little about the role, project, or reason for reaching out."
         />
         {state.fieldErrors?.message ? (
-          <p className="mt-2 text-sm text-[#b54747]">
+          <p
+            id="message-error"
+            className="mt-2 text-sm text-[var(--error)]">
             {state.fieldErrors.message}
           </p>
         ) : null}
@@ -120,7 +134,7 @@ export default function ContactForm() {
           className={cn(
             "text-sm leading-7",
             state.status === "error"
-              ? "text-[#9d3b3b]"
+              ? "text-[var(--error-strong)]"
               : state.status === "success"
                 ? "text-[var(--accent-strong)]"
                 : "text-[var(--muted)]",

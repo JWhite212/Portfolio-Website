@@ -20,6 +20,7 @@
 *.pem
 .vscode
 .idea
+.claude
 copilot-instructions.md
 # debug
 npm-debug.log*

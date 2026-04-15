@@ -164,13 +164,8 @@ export default function Home() {
             <Reveal>
               <SectionIntro
                 eyebrow="Experience and education"
-<<<<<<< HEAD
                 title="From customer-facing roles to engineering solutions that ship."
                 body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
-=======
-                 title="From customer-facing roles to engineering solutions that ship."
-                 body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
->>>>>>> a8f77a7cfaf370a033ad9d323da9ed5ce50fdf86
               />
             </Reveal>
 

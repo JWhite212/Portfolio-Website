@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:www.linkedin.com)",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "Bash(gh pr:*)"
     ]
   },
   "outputStyle": "default"

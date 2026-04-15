@@ -69,7 +69,7 @@ export default function SiteHeader() {
           JW / Portfolio
         </Link>
 
-        <nav className="min-w-0">
+        <nav aria-label="Main navigation" className="min-w-0">
           <ul className="flex flex-wrap items-center justify-center gap-1.5 text-sm text-[var(--muted)] sm:gap-2">
             {navigation.map((item) => {
               const isActive =

@@ -21,45 +21,45 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 56,
-          background:
-            "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(242,238,230,1) 100%)",
-          color: "#151a19",
-          border: "1px solid rgba(21,26,25,0.08)",
+          background: "#0a0a0a",
+          color: "#e8e6e3",
+          fontFamily: "monospace",
         }}>
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            fontSize: 20,
-            letterSpacing: "0.28em",
+            fontSize: 18,
+            letterSpacing: "0.3em",
             textTransform: "uppercase",
-            color: "#5d635f",
+            color: "#39ff14",
           }}>
-          <span>Jamie White</span>
+          <span>[JW]</span>
           <span>Portfolio</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div
             style={{
-              fontSize: 68,
+              fontSize: 64,
               lineHeight: 1,
-              letterSpacing: "-0.06em",
+              letterSpacing: "-0.04em",
               fontWeight: 700,
               maxWidth: 900,
+              color: "#e8e6e3",
             }}>
             Building clear, reliable software across web, Java, and embedded
             systems.
           </div>
           <div
             style={{
-              fontSize: 28,
+              fontSize: 24,
               lineHeight: 1.4,
-              color: "#14433d",
+              color: "#39ff14",
               maxWidth: 860,
             }}>
-            Employer-focused portfolio for an early-career software engineer
-            with a bias for maintainable architecture and polished delivery.
+            &gt; Early-career software engineer / maintainable architecture /
+            polished delivery
           </div>
         </div>
       </div>

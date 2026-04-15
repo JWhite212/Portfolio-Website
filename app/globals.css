@@ -3,16 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: #f2eee6;
-  --surface: rgba(255, 255, 255, 0.68);
-  --foreground: #151a19;
-  --muted: #5d635f;
-  --line: rgba(21, 26, 25, 0.12);
-  --accent: #1d6a60;
-  --accent-soft: #dbe9e4;
-  --accent-strong: #14433d;
-  --accent-border: rgba(20, 67, 61, 0.14);
-  --accent-bg-subtle: rgba(20, 67, 61, 0.08);
+  --background: #0a0a0a;
+  --surface: #141414;
+  --surface-elevated: #1a1a1a;
+  --foreground: #e8e6e3;
+  --muted: #737373;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --accent: #39ff14;
+  --accent-dim: rgba(57, 255, 20, 0.15);
+  --accent-muted: rgba(57, 255, 20, 0.08);
+  --error: #ff3333;
+  --error-strong: #ff5555;
+  --selection-bg: rgba(57, 255, 20, 0.2);
 }
 
 * {
@@ -25,30 +28,16 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-jetbrains-mono), monospace;
   background-color: var(--background);
-  background-image: linear-gradient(rgba(20, 67, 61, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 67, 61, 0.05) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(242, 238, 230, 0));
-  background-position: center top;
-  background-size:
-    88px 88px,
-    88px 88px,
-    100% 100%;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.74),
-      transparent 32%
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
     ),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.38), transparent 28%);
-  z-index: -1;
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center top;
+  cursor: none;
 }
 
 a {
@@ -56,8 +45,12 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: var(--accent);
+}
+
 ::selection {
-  background: rgba(20, 67, 61, 0.16);
+  background: var(--selection-bg);
   color: var(--foreground);
 }
 
@@ -73,5 +66,17 @@ a {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    cursor: auto;
   }
 }

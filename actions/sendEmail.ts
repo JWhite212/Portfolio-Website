@@ -156,7 +156,7 @@ export async function sendEmail(
       from: runtimeConfig.from,
       to: runtimeConfig.to,
       subject: "New portfolio enquiry",
-      reply_to: safeSenderEmail,
+      replyTo: safeSenderEmail,
       react: React.createElement(ContactFormEmail, {
         message: safeMessage,
         senderEmail: safeSenderEmail,

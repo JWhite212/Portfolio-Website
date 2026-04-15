@@ -56,9 +56,15 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[var(--accent-strong)] focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+        >
+          Skip to main content
+        </a>
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
-          <div className="flex-1">{children}</div>
+          <div id="main-content" className="flex-1">{children}</div>
           <SiteFooter />
         </div>
         <Analytics />

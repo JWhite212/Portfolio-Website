@@ -9,7 +9,19 @@
       "Bash(npm install:*)",
       "Bash(npx next:*)",
       "Bash(npx prettier:*)",
-      "Bash(node -e \"console.log\\(''react:'', require\\(''react/package.json''\\).version\\); console.log\\(''react-dom:'', require\\(''react-dom/package.json''\\).version\\); console.log\\(''next:'', require\\(''next/package.json''\\).version\\)\")"
+      "Bash(node -e \"console.log\\(''react:'', require\\(''react/package.json''\\).version\\); console.log\\(''react-dom:'', require\\(''react-dom/package.json''\\).version\\); console.log\\(''next:'', require\\(''next/package.json''\\).version\\)\")",
+      "Bash(node -e \"console.log\\('react:', require\\('react/package.json'\\).version\\); console.log\\('react-dom:', require\\('react-dom/package.json'\\).version\\); console.log\\('next:', require\\('next/package.json'\\).version\\)\")",
+      "Bash(ls .env*)",
+      "Bash(node -e \"try { const r = require\\('resend/package.json'\\); console.log\\('resend:', r.version\\); } catch\\(e\\) { console.log\\('err:', e.message\\) }\")",
+      "Bash(node -e ' *)",
+      "mcp__plugin_vercel_vercel__list_teams",
+      "mcp__plugin_vercel_vercel__list_projects",
+      "mcp__plugin_vercel_vercel__get_runtime_logs",
+      "mcp__plugin_vercel_vercel__get_deployment_build_logs",
+      "Bash(npm view *)",
+      "Bash(powershell -c \"[System.Media.SystemSounds]::Asterisk.Play\\(\\)\")",
+      "Bash(echo \"exit=$?\")",
+      "Bash(node *)"
     ]
   },
   "outputStyle": "default"

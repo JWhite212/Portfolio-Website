@@ -14,17 +14,20 @@ import { notFound } from "next/navigation";
 import { BsArrowLeft, BsArrowUpRight } from "react-icons/bs";
 
 type ProjectPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export function generateStaticParams() {
   return getCaseStudyParams();
 }
 
-export function generateMetadata({ params }: ProjectPageProps): Metadata {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     return {};
@@ -50,8 +53,9 @@ export function generateMetadata({ params }: ProjectPageProps): Metadata {
   };
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     notFound();
@@ -126,6 +130,32 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </p>
           </div>
 
+          {caseStudy.metrics && caseStudy.metrics.length > 0 ? (
+            <Reveal>
+              <section className="mt-12">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {caseStudy.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-5">
+                      <p className="font-display text-3xl font-bold leading-tight text-[var(--accent)]">
+                        {metric.value}
+                      </p>
+                      <p className="mt-3 font-mono text-[0.66rem] uppercase tracking-[0.28em] text-[var(--muted)]">
+                        {metric.label}
+                      </p>
+                      {metric.detail ? (
+                        <p className="mt-3 text-sm leading-6 text-[var(--foreground)]">
+                          {metric.detail}
+                        </p>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </Reveal>
+          ) : null}
+
           <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-14">
             <div className="space-y-12">
               <Reveal>
@@ -161,6 +191,30 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </section>
               </Reveal>
 
+              {caseStudy.architecture && caseStudy.architecture.length > 0 ? (
+                <Reveal delay={0.08}>
+                  <section>
+                    <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--accent)]">
+                      <span className="text-[var(--muted)]">[</span>{" "}
+                      Architecture{" "}
+                      <span className="text-[var(--muted)]">]</span>
+                    </h2>
+                    <div className="mt-5 space-y-3">
+                      {caseStudy.architecture.map((item, i) => (
+                        <p
+                          key={item}
+                          className="border-l-[3px] border-[var(--line-strong)] bg-[var(--surface)] px-5 py-4 text-sm leading-8 text-[var(--foreground)]">
+                          <span className="font-display text-lg font-bold text-[var(--foreground)]">
+                            A{i + 1}.
+                          </span>{" "}
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </section>
+                </Reveal>
+              ) : null}
+
               <Reveal delay={0.1}>
                 <section>
                   <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--accent)]">
@@ -184,6 +238,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </section>
               </Reveal>
 
+              {caseStudy.features && caseStudy.features.length > 0 ? (
+                <Reveal delay={0.12}>
+                  <section>
+                    <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--accent)]">
+                      <span className="text-[var(--muted)]">[</span> Features{" "}
+                      <span className="text-[var(--muted)]">]</span>
+                    </h2>
+                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                      {caseStudy.features.map((feature) => (
+                        <article
+                          key={feature.title}
+                          className="border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-4">
+                          <h3 className="font-display text-sm font-bold text-[var(--foreground)]">
+                            {feature.title}
+                          </h3>
+                          <p className="mt-2 text-sm leading-7 text-[var(--muted)]">
+                            {feature.detail}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                </Reveal>
+              ) : null}
+
               <Reveal delay={0.15}>
                 <section>
                   <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--accent)]">
@@ -202,6 +281,61 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   </ul>
                 </section>
               </Reveal>
+
+              {caseStudy.challenges && caseStudy.challenges.length > 0 ? (
+                <Reveal delay={0.2}>
+                  <section>
+                    <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--accent)]">
+                      <span className="text-[var(--muted)]">[</span> Challenges
+                      &amp; learnings{" "}
+                      <span className="text-[var(--muted)]">]</span>
+                    </h2>
+                    <div className="mt-5 space-y-3">
+                      {caseStudy.challenges.map((challenge) => (
+                        <article
+                          key={challenge.title}
+                          className="border-l-[3px] border-[var(--accent-dim)] bg-[var(--surface)] px-5 py-5">
+                          <h3 className="font-display text-base font-bold text-[var(--foreground)]">
+                            {challenge.title}
+                          </h3>
+                          <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                            {challenge.detail}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </section>
+                </Reveal>
+              ) : null}
+
+              {caseStudy.media.length > 1 ? (
+                <section>
+                  <h2 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--accent)]">
+                    <span className="text-[var(--muted)]">[</span> Screens{" "}
+                    <span className="text-[var(--muted)]">]</span>
+                  </h2>
+                  <div className="mt-5 space-y-6">
+                    {caseStudy.media.slice(1).map((item, i) => (
+                      <Reveal
+                        key={item.caption}
+                        delay={0.05 * i}>
+                        <figure className="border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-3">
+                          <GlitchImage
+                            src={item.src}
+                            alt={item.alt}
+                            fill
+                            sizes="(min-width: 1024px) 80rem, 100vw"
+                            className="relative aspect-[16/9] border border-[var(--line)]"
+                          />
+                          <figcaption className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                            {item.caption}
+                          </figcaption>
+                        </figure>
+                      </Reveal>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
             </div>
 
             <aside className="space-y-5 lg:sticky lg:top-28 lg:self-start">

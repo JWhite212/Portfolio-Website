@@ -51,6 +51,22 @@ export type TechnicalDecision = {
   detail: string;
 };
 
+export type FeatureHighlight = {
+  title: string;
+  detail: string;
+};
+
+export type ChallengeNote = {
+  title: string;
+  detail: string;
+};
+
+export type CaseStudyMetric = {
+  label: string;
+  value: string;
+  detail?: string;
+};
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -66,6 +82,10 @@ export type CaseStudy = {
   media: CaseStudyMedia[];
   featured: boolean;
   githubUrl?: string;
+  architecture?: string[];
+  features?: FeatureHighlight[];
+  challenges?: ChallengeNote[];
+  metrics?: CaseStudyMetric[];
 };
 
 export type ExperienceItem = {

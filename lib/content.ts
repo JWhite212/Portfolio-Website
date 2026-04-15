@@ -2,6 +2,8 @@ import portfolioPreview from "@/public/corpcomment.png";
 import meetingMindDashboardImg from "@/public/meetingMindDashboardScreen.png";
 import meetingMindMeetingsImg from "@/public/meetingMindMeetingsScreen.png";
 import meetingMindRecordImg from "@/public/meetingMindManualRecordScreen.png";
+import meetingMindSettings1Img from "@/public/meetingMindSettingsScreen1.png";
+import meetingMindSettings2Img from "@/public/meetingMindSettingsScreen2.png";
 import plantSystemImg from "@/public/plantSystem.jpg";
 import vendingMachineImg from "@/public/vendingMachine.png";
 import type {
@@ -146,9 +148,109 @@ export const caseStudies: CaseStudy[] = [
         caption:
           "Manual recording mode with waveform visualisation and speaker-labelled playback controls.",
       },
+      {
+        src: meetingMindSettings1Img,
+        alt: "Meeting Mind general settings panel showing recording defaults and app preferences",
+        caption:
+          "General settings — recording defaults, auto-detection behaviour, and app-wide preferences in one panel.",
+      },
+      {
+        src: meetingMindSettings2Img,
+        alt: "Meeting Mind advanced settings panel for transcription model, AI provider, and export targets",
+        caption:
+          "Advanced settings — transcription model selection, AI provider routing between local Ollama and Claude, and Notion / Obsidian export configuration.",
+      },
     ],
     featured: true,
     githubUrl: "https://github.com/JWhite212/meeting-mind",
+    metrics: [
+      {
+        label: "Network calls during transcription",
+        value: "0",
+        detail:
+          "All speech-to-text runs on-device via faster-whisper + CTranslate2.",
+      },
+      {
+        label: "Audio sources per meeting",
+        value: "2",
+        detail:
+          "System audio + microphone captured in parallel and RMS-normalised.",
+      },
+      {
+        label: "Export targets",
+        value: "3",
+        detail:
+          "Markdown (Obsidian-compatible), native Notion pages, plain-text transcript.",
+      },
+      {
+        label: "AI providers supported",
+        value: "Local + cloud",
+        detail:
+          "Ollama for fully offline summaries, Claude API for higher-quality cloud summaries.",
+      },
+    ],
+    architecture: [
+      "Tauri v2 shell with a React and TypeScript frontend handles the desktop UI, window management, and native integration points while keeping the binary small.",
+      "A Python FastAPI daemon bound to localhost runs alongside the shell, responsible for meeting detection, lifecycle state, and orchestrating the audio capture subsystem.",
+      "Dual audio capture pulls system output through the BlackHole virtual driver and microphone input in parallel, then merges the two streams with RMS normalisation so neither side dominates the mix.",
+      "The transcription pipeline runs faster-whisper on a CTranslate2 backend with energy-based diarisation, producing speaker-labelled timestamped segments without any network traffic.",
+      "A summary layer routes transcripts to either a local Ollama model or the Claude API, so the same pipeline supports fully offline operation or higher-quality cloud summaries.",
+      "An export layer writes Markdown with YAML frontmatter for Obsidian or pushes structured pages into Notion databases, while SQLite stores meeting metadata and backs full-text search across history.",
+    ],
+    features: [
+      {
+        title: "Auto meeting detection",
+        detail:
+          "Watches for active Teams calls and begins recording without a visible bot or any per-meeting setup step.",
+      },
+      {
+        title: "Dual-channel audio capture",
+        detail:
+          "Captures remote participants and the local microphone on separate channels so transcripts can distinguish speakers reliably.",
+      },
+      {
+        title: "Real-time audio meters",
+        detail:
+          "Live level meters for both channels give immediate feedback that capture is healthy before a meeting starts.",
+      },
+      {
+        title: "Streaming transcript",
+        detail:
+          "Transcribed segments appear as they are produced so the user can follow the record as the meeting runs rather than waiting for a post-call export.",
+      },
+      {
+        title: "Command palette (Cmd+K)",
+        detail:
+          "Keyboard-first access to recording controls, search, and navigation keeps the interface out of the way during active calls.",
+      },
+      {
+        title: "Full-text meeting search",
+        detail:
+          "SQLite-backed full-text search spans every transcript and summary, so past discussions stay retrievable instead of sitting in isolated files.",
+      },
+      {
+        title: "Obsidian + Notion export",
+        detail:
+          "Writes Markdown with YAML frontmatter for Obsidian vaults or native pages into Notion databases, letting meetings flow into existing knowledge systems.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Keeping two live audio streams in sync without drift",
+        detail:
+          "The system audio and microphone arrive from different devices with independent clocks, so small drift accumulates quickly. Capture runs on a shared frame clock, each stream is RMS-normalised so neither side dominates the mix, and frame-aligned mixing is handled on fixed-size buffers rather than by concatenating raw chunks, which keeps the merged output aligned with the transcript timeline.",
+      },
+      {
+        title: "Running faster-whisper efficiently without blocking the UI",
+        detail:
+          "The FastAPI daemon hosts transcription on a background worker and streams partial segments to the Tauri frontend over a local HTTP and WebSocket bridge. The UI only awaits small incremental messages, the Python side pushes results as soon as a segment is ready, and the async boundaries are scoped tightly so the React layer never has to wait on a long-running inference call.",
+      },
+      {
+        title: "Handling Teams meeting edge cases reliably",
+        detail:
+          "Teams calls change shape mid-meeting — mute toggles, breakout rooms, and screen-share transitions all alter the audio graph. Detection reads mute state and active device changes explicitly, breakouts are treated as scoped sub-sessions rather than new meetings, and any capture failure falls back to manual recording rather than silently dropping audio, so the record stays trustworthy even when the call does something unexpected.",
+      },
+    ],
   },
   {
     slug: "automatic-plant-watering-system",

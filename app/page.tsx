@@ -160,7 +160,7 @@ export default function Home() {
           id="experience"
           className="border-y border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
-          <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div className="mx-auto max-w-[88rem]">
             <Reveal>
               <SectionIntro
                 eyebrow="Experience and education"
@@ -169,7 +169,7 @@ export default function Home() {
               />
             </Reveal>
 
-            <div className="grid gap-8 lg:grid-cols-2">
+            <div className="mt-14 grid gap-8 lg:grid-cols-2">
               <Reveal
                 delay={0.05}
                 className="self-start rounded-[1.85rem] border border-[var(--line)] bg-[var(--surface)] p-6 sm:p-8">

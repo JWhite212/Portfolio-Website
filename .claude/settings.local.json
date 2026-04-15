@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:www.linkedin.com)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  },
+  "outputStyle": "default"
+}

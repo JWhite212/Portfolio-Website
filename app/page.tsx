@@ -158,14 +158,19 @@ export default function Home() {
 
         <section
           id="experience"
-          className="border-t border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
+          className="border-y border-[var(--line)] px-4 py-20 sm:px-6 lg:px-10 lg:py-24"
           data-nav-section>
-          <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-16">
+          <div className="mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
             <Reveal>
               <SectionIntro
                 eyebrow="Experience and education"
-                title="A foundation built through computer science study and public-facing work that demanded reliability."
-                body="My formal training shaped the technical base. The jobs alongside it sharpened communication, prioritisation, and steady delivery under pressure."
+<<<<<<< HEAD
+                title="From customer-facing roles to engineering solutions that ship."
+                body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
+=======
+                 title="From customer-facing roles to engineering solutions that ship."
+                 body="Years of public-facing work built communication, prioritisation, and reliability. Now I apply those foundations alongside technical skill as a Software and Solutions Engineer."
+>>>>>>> a8f77a7cfaf370a033ad9d323da9ed5ce50fdf86
               />
             </Reveal>
 
@@ -183,10 +188,10 @@ export default function Home() {
                       className="rounded-[1.35rem] border border-[color:rgba(20,67,61,0.12)] bg-white px-5 py-5">
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
-                          <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                          <h3 className="text-lg font-bold text-[var(--foreground)]">
                             {item.title}
                           </h3>
-                          <h4 className="text-lg font-semibold text-[var(--foreground)]">
+                          <h4 className="text-m font-semibold text-[var(--foreground)]">
                             {item.grade}
                           </h4>
                           <p className="mt-1 text-sm text-[var(--muted)]">

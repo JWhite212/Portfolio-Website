@@ -65,6 +65,7 @@ export type CaseStudy = {
   links: CaseStudyLink[];
   media: CaseStudyMedia[];
   featured: boolean;
+  githubUrl?: string;
 };
 
 export type ExperienceItem = {

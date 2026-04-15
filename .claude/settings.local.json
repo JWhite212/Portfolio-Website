@@ -4,7 +4,12 @@
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:www.linkedin.com)",
       "Bash(echo \"exit: $?\")",
-      "Bash(gh pr:*)"
+      "Bash(gh pr:*)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)",
+      "Bash(npx prettier:*)",
+      "Bash(node -e \"console.log\\(''react:'', require\\(''react/package.json''\\).version\\); console.log\\(''react-dom:'', require\\(''react-dom/package.json''\\).version\\); console.log\\(''next:'', require\\(''next/package.json''\\).version\\)\")"
     ]
   },
   "outputStyle": "default"

@@ -4,6 +4,11 @@ import meetingMindMeetingsImg from "@/public/meetingMindMeetingsScreen.png";
 import meetingMindRecordImg from "@/public/meetingMindManualRecordScreen.png";
 import meetingMindSettings1Img from "@/public/meetingMindSettingsScreen1.png";
 import meetingMindSettings2Img from "@/public/meetingMindSettingsScreen2.png";
+import medTrackerDashboardImg from "@/public/medicationTrackerDashboard.png";
+import medTrackerMedsImg from "@/public/medicationTrackerMedications.png";
+import medTrackerAddImg from "@/public/medicationTrackerAddMedication.png";
+import medTrackerHistoryImg from "@/public/medicationTrackerHistory.png";
+import medTrackerAnalyticsImg from "@/public/medicationTrackerAnalytics.png";
 import plantSystemImg from "@/public/plantSystem.jpg";
 import vendingMachineImg from "@/public/vendingMachine.png";
 import type {
@@ -249,6 +254,200 @@ export const caseStudies: CaseStudy[] = [
         title: "Handling Teams meeting edge cases reliably",
         detail:
           "Teams calls change shape mid-meeting — mute toggles, breakout rooms, and screen-share transitions all alter the audio graph. Detection reads mute state and active device changes explicitly, breakouts are treated as scoped sub-sessions rather than new meetings, and any capture failure falls back to manual recording rather than silently dropping audio, so the record stays trustworthy even when the call does something unexpected.",
+      },
+    ],
+  },
+  {
+    slug: "medication-tracker",
+    title: "MedTracker",
+    summary:
+      "A SvelteKit medication tracking app with one-tap dose logging, live time-since counters, per-medication adherence analytics, and inventory management — built server-first with a dark glassmorphism UI.",
+    role: "Solo developer",
+    period: "Personal project",
+    problem:
+      "Medication adherence is hard because existing tools feel clinical, lack fast one-tap logging, don't show live 'time since last dose' counters, and rarely offer honest per-medication adherence analytics. I wanted a server-first app that kept data private and scoped per-user, handled timezone-correct analytics, and delivered a polished dark-mode interface that made daily tracking feel effortless rather than clinical.",
+    approach: [
+      "Built the entire mutation layer around SvelteKit form actions with use:enhance progressive enhancement, so every create, update, and delete goes through the server with no client-side data library. This keeps the trust boundary clear and means the app works without JavaScript for core flows.",
+      "Implemented live 'time since last dose' counters using Svelte 5 $effect and setInterval on a 60-second tick with visibilitychange recalculation, giving a real-time feel without requiring WebSocket infrastructure.",
+      "Designed a dual-colour system with 8 visual patterns (solid, split, gradient, diagonal stripes, horizontal stripes, polka dots, checkerboard, radial) so medications are visually distinguishable at a glance — faster recognition than reading labels.",
+    ],
+    technicalDecisions: [
+      {
+        title: "SvelteKit server actions over REST API",
+        detail:
+          "All mutations are form actions with use:enhance progressive enhancement. This eliminates the need for a separate API layer, keeps the trust boundary on the server, and means core functionality works even without client-side JavaScript.",
+      },
+      {
+        title: "Drizzle ORM with Neon serverless Postgres",
+        detail:
+          "Type-safe schema definitions that generate correct SQL, paired with Neon's serverless driver for fast cold starts on Vercel. Migrations are version-controlled via drizzle-kit.",
+      },
+      {
+        title: "Lucia v3 and Arctic for authentication",
+        detail:
+          "Database-backed sessions validated in hooks.server.ts on every request, with Google and GitHub OAuth via Arctic. Password hashing uses Argon2, and the registration flow includes a Have I Been Pwned k-anonymity breach check.",
+      },
+      {
+        title: "Audit log with JSONB diffs",
+        detail:
+          "Every create, update, and delete operation captures before and after field values as JSONB diffs, providing a complete change history for trust and debuggability.",
+      },
+    ],
+    stack: [
+      "SvelteKit",
+      "Svelte 5",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "PostgreSQL",
+      "Neon",
+      "Drizzle ORM",
+      "Lucia v3",
+      "Arctic",
+      "Zod",
+      "Resend",
+      "PDFKit",
+      "Argon2",
+      "Vitest",
+      "Playwright",
+      "Vercel",
+    ],
+    outcome: [
+      "Shipped a full production app on Vercel with authentication, analytics, reminders, PDF/CSV export, and a mobile-first responsive UI — demonstrating end-to-end ownership from schema design through deployment.",
+      "Achieved a real-time feel without WebSocket infrastructure by structuring client reactivity through Svelte 5 runes, keeping the architecture simple while the experience feels live.",
+      "Built a complete auth system with email verification, password reset, OAuth linking, session management, and rate limiting — proving I can handle security-sensitive flows independently.",
+    ],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/JWhite212/medication-tracker",
+        kind: "repository",
+      },
+      {
+        label: "Live demo",
+        href: "https://medication-tracker-jw.vercel.app",
+        kind: "live",
+      },
+    ],
+    media: [
+      {
+        src: medTrackerDashboardImg,
+        alt: "MedTracker dashboard showing My Day schedule, quick-log pills, and today's dose timeline",
+        caption:
+          "Dashboard with quick-log pills, My Day schedule, live time-since counters, and today's dose timeline.",
+      },
+      {
+        src: medTrackerMedsImg,
+        alt: "MedTracker medications list with dual-colour patterns and supply bars",
+        caption:
+          "Medication library with dual-colour patterns, last-taken time, and refill-projection supply bars.",
+      },
+      {
+        src: medTrackerAddImg,
+        alt: "MedTracker add medication form with colour picker and pattern selection",
+        caption:
+          "Add-medication form with 10-colour picker, 8 visual patterns, schedule type (scheduled vs PRN), and inventory thresholds.",
+      },
+      {
+        src: medTrackerHistoryImg,
+        alt: "MedTracker dose history grouped by day with time-since counters",
+        caption:
+          "Filterable dose history grouped by day with per-dose time-since counters.",
+      },
+      {
+        src: medTrackerAnalyticsImg,
+        alt: "MedTracker analytics with streak, adherence, heatmap, and distribution charts",
+        caption:
+          "Day-streak, adherence %, activity heatmap, day-of-week, and time-of-day distributions with period selector.",
+      },
+    ],
+    featured: true,
+    githubUrl: "https://github.com/JWhite212/medication-tracker",
+    metrics: [
+      {
+        label: "Client-side data libraries",
+        value: "0",
+        detail:
+          "All mutations go through SvelteKit form actions — no client-side data fetching or caching library needed.",
+      },
+      {
+        label: "Auth providers",
+        value: "3",
+        detail:
+          "Email/password with verification, Google OAuth, and GitHub OAuth via Arctic.",
+      },
+      {
+        label: "Visual patterns per med",
+        value: "8",
+        detail:
+          "Solid, split, gradient, diagonal stripes, horizontal stripes, polka dots, checkerboard, and radial.",
+      },
+      {
+        label: "Export formats",
+        value: "PDF + CSV",
+        detail:
+          "Full dose history exportable as formatted PDF via PDFKit or raw CSV for spreadsheet analysis.",
+      },
+    ],
+    architecture: [
+      "Svelte 5 runes ($props, $state, $derived, $effect) power the client-side reactivity layer, keeping component state predictable and the template syntax minimal.",
+      "SvelteKit form actions handle every mutation through +page.server.ts loaders and actions, with use:enhance providing progressive enhancement so the app degrades gracefully without JavaScript.",
+      "Drizzle ORM provides type-safe query building against a Neon serverless PostgreSQL database, with schema definitions that double as the migration source via drizzle-kit.",
+      "Lucia v3 manages database-backed sessions validated in hooks.server.ts on every request, with Arctic handling OAuth flows for Google and GitHub providers.",
+      "Resend delivers transactional email for verification codes, password resets, and a daily Vercel Cron job at /api/cron/reminders that sends overdue medication alerts.",
+      "CSP headers, per-route rate limiting, Zod validation on every form action, and user_id scoping on every database query form the security boundary.",
+    ],
+    features: [
+      {
+        title: "Quick-log one-tap dosing",
+        detail:
+          "Colour-coded medication pills on the dashboard allow single-tap dose logging without navigating away from the main view.",
+      },
+      {
+        title: "Live time-since counters",
+        detail:
+          "Every logged dose shows a live 'time since' counter updated every 60 seconds via $effect, with visibilitychange recalculation when the tab regains focus.",
+      },
+      {
+        title: "My Day schedule timeline",
+        detail:
+          "Groups scheduled medications by time-of-day period (morning, afternoon, evening, night) with one-tap logging directly from the schedule.",
+      },
+      {
+        title: "Dual-colour and 8 patterns",
+        detail:
+          "Each medication gets a primary and optional secondary colour rendered through 8 CSS background patterns for instant visual recognition.",
+      },
+      {
+        title: "Adherence and streak analytics",
+        detail:
+          "Calculates expected vs actual doses over configurable periods, showing per-medication adherence percentages and consecutive-day streaks.",
+      },
+      {
+        title: "90-day activity heatmap",
+        detail:
+          "A GitHub-style contribution heatmap showing dose activity density across the last 90 days, with day-of-week and time-of-day distribution charts.",
+      },
+      {
+        title: "PDF and CSV export",
+        detail:
+          "Full dose history exportable as a formatted PDF report via PDFKit or as raw CSV for spreadsheet analysis and medical appointments.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Keeping per-user data strictly scoped",
+        detail:
+          "Every database query filters by user_id on the server side, enforced in hooks.server.ts before any loader or action runs. There is no client-side route that can access another user's data because the scoping happens at the query layer, not the route layer.",
+      },
+      {
+        title: "Timezone-correct analytics across UTC storage",
+        detail:
+          "All timestamps are stored as UTC in PostgreSQL. Analytics queries use SQL AT TIME ZONE with the user's configured IANA timezone to group doses by local date, while the frontend uses Intl.DateTimeFormat for display — keeping the source of truth in UTC while the experience feels local.",
+      },
+      {
+        title: "Preventing OAuth account takeover on linking",
+        detail:
+          "When a user signs in via OAuth with an email that matches an existing email/password account, the system requires email verification before linking. This prevents an attacker from creating a Google account with someone else's email and hijacking their MedTracker account.",
       },
     ],
   },

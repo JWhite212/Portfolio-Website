@@ -82,8 +82,8 @@ export default function Home() {
               <SectionIntro
                 index={1}
                 eyebrow="Featured work"
-                title="Three projects that best represent how I think and build."
-                body="These are the strongest examples of my technical judgement right now: one cross-disciplinary systems prototype, one fundamentals-heavy Java build, and one product-facing platform I designed around clearer storytelling and stronger implementation quality."
+                title="Four projects that best represent how I think and build."
+                body="These are the strongest examples of my technical judgement right now: a local-first desktop transcription tool, a production SvelteKit medication tracker, a cross-disciplinary embedded systems prototype, and a fundamentals-heavy Java build — each chosen to show different layers of the stack."
               />
             </Reveal>
 

@@ -38,7 +38,7 @@ function getContactRuntimeConfig() {
   const isProduction = process.env.NODE_ENV === "production";
   const from =
     process.env.PORTFOLIO_CONTACT_FROM ??
-    "Portfolio Contact <onboarding@resend.dev>";
+    "Portfolio Contact <interest@jamiewhite.site>";
   const to = process.env.PORTFOLIO_CONTACT_TO ?? contactConfig.email;
 
   if (isProduction) {

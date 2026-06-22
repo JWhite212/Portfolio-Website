@@ -80,17 +80,17 @@ export const profile: Profile = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "meeting-mind",
-    title: "Meeting Mind",
+    slug: "context-recall",
+    title: "Context Recall",
     summary:
-      "A Tauri v2 desktop application that automatically detects Microsoft Teams meetings, captures dual audio sources, transcribes locally with faster-whisper, and generates AI-powered summaries — all without sending audio off-device.",
+      "Context Recall is a local-first macOS meeting assistant for consented recordings. It captures user-controlled local audio sources, transcribes meetings with MLX Whisper, stores transcripts locally, and supports privacy-conscious meeting recall of decisions, action items, and context.",
     role: "Solo developer",
     period: "Personal project",
     problem:
-      "Taking manual notes during meetings splits your attention between listening and writing, producing inconsistent records that miss key decisions. Existing transcription tools either require visible bot participants that change how people behave in meetings, or stream raw audio to external servers — a non-starter for sensitive business discussions. I wanted a tool that could capture, transcribe, and summarise meetings completely in the background, with local-first processing that keeps confidential audio on the machine.",
+      "Taking manual notes during meetings splits your attention between listening and writing, producing inconsistent records that miss key decisions. Existing transcription tools either require visible bot participants that change how people behave in meetings, or stream raw audio to external servers — a non-starter for sensitive business discussions. I wanted a privacy-conscious meeting recall workflow with user-controlled capture, local-first processing, and professional consent-first operation for sensitive discussions.",
     approach: [
-      "Designed the system as a Python daemon (FastAPI on localhost) paired with a Tauri v2 desktop app. The daemon monitors for active Teams calls and automatically begins dual audio capture — system audio via BlackHole virtual driver for remote speakers and microphone input for the user — then merges both streams with RMS normalisation.",
-      "Built the transcription pipeline around faster-whisper with a CTranslate2 backend for efficient on-device speech-to-text. Added energy-based speaker diarisation to distinguish the user from remote participants, producing speaker-labelled timestamped transcripts without any network traffic.",
+      "Designed the system as a Python daemon (FastAPI on localhost) paired with a Tauri v2 desktop app. Capture is user-controlled and limited to configured local audio sources, with consented recordings merged and normalised for reliable downstream transcription.",
+      "Built the transcription pipeline around MLX Whisper for efficient on-device speech-to-text. Added energy-based speaker diarisation to distinguish the user from remote participants, producing speaker-labelled timestamped transcripts without unnecessary network transfer of raw audio.",
       "Connected the transcript output to either a local Ollama instance or the Claude API for structured summarisation. The system generates meeting summaries with action items, key decisions, and attendee contributions, then exports to Markdown with YAML frontmatter (optimised for Obsidian) or directly to Notion databases.",
     ],
     technicalDecisions: [
@@ -100,9 +100,9 @@ export const caseStudies: CaseStudy[] = [
           "Chose Tauri over Electron for a significantly smaller binary size and native Rust performance. The React frontend provides a polished interface with real-time audio meters, streaming transcripts, waveform visualisation, and a command palette (Cmd+K) — all styled with Tailwind CSS and managed with Zustand state.",
       },
       {
-        title: "Local-first transcription with faster-whisper",
+        title: "Local-first transcription with MLX Whisper",
         detail:
-          "Runs the entire speech-to-text pipeline on-device using faster-whisper's CTranslate2 backend, avoiding cloud transcription APIs entirely. This keeps all meeting audio on the machine, addresses privacy requirements for sensitive discussions, and eliminates per-minute API costs.",
+          "Runs the entire speech-to-text pipeline on-device using MLX Whisper's CTranslate2 backend, avoiding cloud transcription APIs entirely. This keeps all meeting audio on the machine, addresses privacy requirements for sensitive discussions, and eliminates per-minute API costs.",
       },
       {
         title: "Dual audio capture via BlackHole",
@@ -117,63 +117,63 @@ export const caseStudies: CaseStudy[] = [
       "TypeScript",
       "FastAPI",
       "Python",
-      "faster-whisper",
+      "MLX Whisper",
       "Claude API",
       "SQLite",
       "Tailwind CSS",
     ],
     outcome: [
-      "Shipped a fully automated meeting pipeline — from detection through transcription to structured summary — that runs invisibly in the background with zero manual setup per meeting.",
+      "Shipped a local-first meeting pipeline for consented recordings, from user-controlled capture through transcription to structured summaries.",
       "All audio capture and transcription stays on-device, making the tool suitable for confidential discussions where cloud-based alternatives are not appropriate.",
       "Built a polished desktop application with live audio meters, streaming transcripts, full-text search across meeting history, waveform playback, and multiple export formats including Obsidian-compatible Markdown and native Notion pages.",
     ],
     links: [
       {
         label: "Repository",
-        href: "https://github.com/JWhite212/meeting-mind",
+        href: "https://github.com/JWhite212/context-recall",
         kind: "repository",
       },
     ],
     media: [
       {
         src: meetingMindDashboardImg,
-        alt: "Meeting Mind dashboard showing live recording interface with audio meters and transcript",
+        alt: "Context Recall dashboard showing live recording interface with audio meters and transcript",
         caption:
           "The main dashboard during an active recording — real-time audio levels, streaming transcript, and meeting controls.",
       },
       {
         src: meetingMindMeetingsImg,
-        alt: "Meeting Mind meetings list with search and meeting history",
+        alt: "Context Recall meetings list with search and meeting history",
         caption:
           "Meeting history view with full-text search across all transcripts and summaries.",
       },
       {
         src: meetingMindRecordImg,
-        alt: "Meeting Mind manual recording interface with waveform visualisation",
+        alt: "Context Recall manual recording interface with waveform visualisation",
         caption:
           "Manual recording mode with waveform visualisation and speaker-labelled playback controls.",
       },
       {
         src: meetingMindSettings1Img,
-        alt: "Meeting Mind general settings panel showing recording defaults and app preferences",
+        alt: "Context Recall general settings panel showing recording defaults and app preferences",
         caption:
-          "General settings — recording defaults, auto-detection behaviour, and app-wide preferences in one panel.",
+          "General settings — recording defaults, consent and capture behaviour, and app-wide preferences in one panel.",
       },
       {
         src: meetingMindSettings2Img,
-        alt: "Meeting Mind advanced settings panel for transcription model, AI provider, and export targets",
+        alt: "Context Recall advanced settings panel for transcription model, AI provider, and export targets",
         caption:
           "Advanced settings — transcription model selection, AI provider routing between local Ollama and Claude, and Notion / Obsidian export configuration.",
       },
     ],
     featured: true,
-    githubUrl: "https://github.com/JWhite212/meeting-mind",
+    githubUrl: "https://github.com/JWhite212/context-recall",
     metrics: [
       {
         label: "Network calls during transcription",
         value: "0",
         detail:
-          "All speech-to-text runs on-device via faster-whisper + CTranslate2.",
+          "All speech-to-text runs on-device via MLX Whisper + CTranslate2.",
       },
       {
         label: "Audio sources per meeting",
@@ -198,7 +198,7 @@ export const caseStudies: CaseStudy[] = [
       "Tauri v2 shell with a React and TypeScript frontend handles the desktop UI, window management, and native integration points while keeping the binary small.",
       "A Python FastAPI daemon bound to localhost runs alongside the shell, responsible for meeting detection, lifecycle state, and orchestrating the audio capture subsystem.",
       "Dual audio capture pulls system output through the BlackHole virtual driver and microphone input in parallel, then merges the two streams with RMS normalisation so neither side dominates the mix.",
-      "The transcription pipeline runs faster-whisper on a CTranslate2 backend with energy-based diarisation, producing speaker-labelled timestamped segments without any network traffic.",
+      "The transcription pipeline runs MLX Whisper on a CTranslate2 backend with energy-based diarisation, producing speaker-labelled timestamped segments without any network traffic.",
       "A summary layer routes transcripts to either a local Ollama model or the Claude API, so the same pipeline supports fully offline operation or higher-quality cloud summaries.",
       "An export layer writes Markdown with YAML frontmatter for Obsidian or pushes structured pages into Notion databases, while SQLite stores meeting metadata and backs full-text search across history.",
     ],
@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Auto meeting detection",
         detail:
-          "Watches for active Teams calls and begins recording without a visible bot or any per-meeting setup step.",
+          "Provides guided capture controls so users can start and stop consented recordings intentionally without per-meeting reconfiguration.",
       },
       {
         title: "Dual-channel audio capture",
@@ -231,7 +231,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Full-text meeting search",
         detail:
-          "SQLite-backed full-text search spans every transcript and summary, so past discussions stay retrievable instead of sitting in isolated files.",
+          "SQLite-backed full-text search spans every transcript and summary, with data and logs stored in app-managed local paths under user control.",
       },
       {
         title: "Obsidian + Notion export",
@@ -246,7 +246,7 @@ export const caseStudies: CaseStudy[] = [
           "The system audio and microphone arrive from different devices with independent clocks, so small drift accumulates quickly. Capture runs on a shared frame clock, each stream is RMS-normalised so neither side dominates the mix, and frame-aligned mixing is handled on fixed-size buffers rather than by concatenating raw chunks, which keeps the merged output aligned with the transcript timeline.",
       },
       {
-        title: "Running faster-whisper efficiently without blocking the UI",
+        title: "Running MLX Whisper efficiently without blocking the UI",
         detail:
           "The FastAPI daemon hosts transcription on a background worker and streams partial segments to the Tauri frontend over a local HTTP and WebSocket bridge. The UI only awaits small incremental messages, the Python side pushes results as soon as a segment is ready, and the async boundaries are scoped tightly so the React layer never has to wait on a long-running inference call.",
       },

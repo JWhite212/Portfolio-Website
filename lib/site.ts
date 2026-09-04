@@ -26,6 +26,10 @@ export function getFeaturedCaseStudies() {
   return caseStudies.filter((caseStudy) => caseStudy.featured);
 }
 
+export function getOtherCaseStudies() {
+  return caseStudies.filter((caseStudy) => !caseStudy.featured);
+}
+
 export function getCaseStudyBySlug(slug: string) {
   return caseStudies.find((caseStudy) => caseStudy.slug === slug);
 }

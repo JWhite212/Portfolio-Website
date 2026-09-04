@@ -14,11 +14,17 @@ import {
   profile,
   skillsByGroup,
 } from "@/lib/content";
-import { buildHomeStructuredData, getFeaturedCaseStudies } from "@/lib/site";
+import {
+  buildHomeStructuredData,
+  getFeaturedCaseStudies,
+  getOtherCaseStudies,
+} from "@/lib/site";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { BsArrowUpRight } from "react-icons/bs";
 
 const featuredCaseStudies = getFeaturedCaseStudies();
+const otherCaseStudies = getOtherCaseStudies();
 
 const allSkills = skillsByGroup.flatMap((g) => g.skills);
 
@@ -96,6 +102,35 @@ export default function Home() {
                 />
               ))}
             </div>
+
+            {otherCaseStudies.length > 0 ? (
+              <Reveal>
+                <div className="mt-16 border-t-brutal border-[var(--line-strong)] pt-8">
+                  <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.3em] text-[var(--muted)]">
+                    <span className="text-[var(--accent)]">[</span> Other work{" "}
+                    <span className="text-[var(--accent)]">]</span>
+                  </h3>
+                  <ul className="mt-6 grid gap-0">
+                    {otherCaseStudies.map((caseStudy) => (
+                      <li
+                        key={caseStudy.slug}
+                        className="border-t border-[var(--line)] first:border-t-0">
+                        <Link
+                          href={`/projects/${caseStudy.slug}`}
+                          className="group flex flex-col gap-1 py-5 transition-colors duration-200 hover:text-[var(--accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] sm:flex-row sm:items-baseline sm:gap-6">
+                          <span className="font-display text-lg font-bold tracking-[-0.02em] text-[var(--foreground)] group-hover:text-[var(--accent)] sm:w-64 sm:shrink-0">
+                            {caseStudy.title}
+                          </span>
+                          <span className="text-sm leading-7 text-[var(--muted)]">
+                            {caseStudy.summary}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ) : null}
           </div>
         </section>
 

@@ -180,7 +180,7 @@ export default function HeroSection() {
                     Current focus
                   </p>
                   <p className="mt-2 text-sm font-medium text-[var(--foreground)]">
-                    Early-career software engineering roles
+                    Roles with more production ownership
                   </p>
                 </div>
                 <span className="border-brutal border-[var(--accent)] px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[var(--accent)]">

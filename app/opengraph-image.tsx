@@ -58,8 +58,8 @@ export default function Image() {
               color: "#39ff14",
               maxWidth: 860,
             }}>
-            &gt; Early-career software engineer / maintainable architecture /
-            polished delivery
+            &gt; Software &amp; solutions engineer / shipped mobile and web
+            systems / tested by default
           </div>
         </div>
       </div>

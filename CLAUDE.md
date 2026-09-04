@@ -20,8 +20,10 @@ npm run fix          # Auto-fix formatting + lint
 - `app/page.tsx` — Home page (single-page layout with section anchors: projects, approach, experience, contact).
 - `app/projects/[slug]/` — Dynamic case study detail pages.
 - `components/` — Presentational components (hero, header, footer, contact form, reveal animations).
-- `actions/sendEmail.ts` — Server action for contact form (Resend API, honeypot spam filter).
-- `email/` — React Email template for contact form notifications.
+- `actions/sendEmail.ts` — Server action for contact form. Escapes input, builds
+  HTML and plain-text email bodies inline, and delivers via the Resend API.
+  Includes a honeypot field and an in-memory rate limiter. There is no `email/`
+  directory and React Email is not a dependency.
 
 ## Environment Variables
 

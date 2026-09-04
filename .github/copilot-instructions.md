@@ -2,7 +2,7 @@
 
 ## Project Overview
 - This is a personal portfolio built with Next.js (App Router), React, TypeScript, and Tailwind CSS.
-- The site showcases projects, skills, and experience, and includes a contact form powered by React Email and Resend.
+- The site showcases projects, skills, and experience, and includes a contact form powered by a Next.js server action and Resend.
 - Animations are handled with Framer Motion.
 
 ## Key Structure
@@ -21,7 +21,7 @@
 - All images are imported and used with Next.js `<Image />` for optimization.
 - TypeScript is enforced throughout; use `as const` for static data arrays.
 - Use React context for cross-component state (see `active-section-context.tsx`).
-- Contact form uses React Email for rendering and Resend for delivery (see `email/` and `actions/sendEmail.ts`).
+- Contact form builds escaped HTML inline and uses Resend for delivery (see `actions/sendEmail.ts`). There is no `email/` directory.
 
 ## Developer Workflows
 - **Install dependencies:** `npm install`
@@ -32,7 +32,7 @@
 - **Deploy:** Designed for Vercel, but can be deployed anywhere supporting Next.js
 
 ## Integration Points
-- Contact form: Integrates React Email (for email rendering) and Resend (for sending emails).
+- Contact form: builds its own escaped HTML/plain-text bodies and uses Resend (for sending emails).
 - Project images: All images must be placed in `public/` and imported in `lib/data.ts`.
 
 ## Examples

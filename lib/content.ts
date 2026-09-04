@@ -792,7 +792,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Inline contact feedback with server action delivery",
         detail:
-          "The contact form uses a server action, React Email, and Resend with clearer validation, honeypot spam friction, and env-backed runtime configuration.",
+          "The contact form is a server action that escapes input, builds HTML and plain-text bodies inline, and delivers through Resend — with validation, a honeypot spam trap, in-memory rate limiting, and env-backed runtime configuration.",
       },
     ],
     stack: [
@@ -800,7 +800,7 @@ export const caseStudies: CaseStudy[] = [
       "TypeScript",
       "Tailwind CSS",
       "Framer Motion",
-      "React Email",
+      "Server Actions",
       "Resend",
       "Structured data",
     ],
@@ -1020,7 +1020,6 @@ export const skillsByGroup: SkillGroup[] = [
       "MongoDB",
       "Firebase",
       "GraphQL",
-      "React Email",
       "Resend",
     ],
   },

@@ -13,8 +13,8 @@ export default function SiteFooter() {
             [JW]
           </p>
           <p className="mt-3 max-w-xl leading-7">
-            Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, React
-            Email, and Resend.
+            Built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and
+            Resend.
           </p>
         </div>
 

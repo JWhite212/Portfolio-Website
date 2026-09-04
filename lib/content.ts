@@ -542,6 +542,8 @@ export const caseStudies: CaseStudy[] = [
       "Lucia v3 manages database-backed sessions validated in hooks.server.ts on every request, with Arctic handling OAuth flows for Google and GitHub providers.",
       "Resend delivers transactional email for verification codes, password resets, and a daily Vercel Cron job at /api/cron/reminders that sends overdue medication alerts.",
       "CSP headers, per-route rate limiting, Zod validation on every form action, and user_id scoping on every database query form the security boundary.",
+      "A versioned /api/v1 JSON surface sits beside the form actions, because a native client cannot post SvelteKit form actions. Both surfaces funnel through the same service layer into the same schema, so a dose logged on either is the same row.",
+      "A native macOS client (Swift 6, SwiftUI, GRDB/SQLite) consumes that API offline-first: writes land in a local outbox and drain to the server when connectivity allows, with server IDs reconciled back into local rows.",
     ],
     features: [
       {
@@ -579,6 +581,11 @@ export const caseStudies: CaseStudy[] = [
         detail:
           "Full dose history exportable as a formatted PDF report via PDFKit or as raw CSV for spreadsheet analysis and medical appointments.",
       },
+      {
+        title: "Offline-first native client",
+        detail:
+          "A macOS client shares the domain rules with the web app but keeps its own local SQLite store, so dose logging works with no connection and reconciles when the network returns. Its sync layer is complete and covered by 406 tests across six Swift packages; the user interface is still in progress.",
+      },
     ],
     challenges: [
       {
@@ -595,6 +602,11 @@ export const caseStudies: CaseStudy[] = [
         title: "Preventing OAuth account takeover on linking",
         detail:
           "When a user signs in via OAuth with an email that matches an existing email/password account, the system requires email verification before linking. This prevents an attacker from creating a Google account with someone else's email and hijacking their MedTracker account.",
+      },
+      {
+        title: "Ordering dependent writes in an offline outbox",
+        detail:
+          "A user can create a medication offline and log a dose against it seconds later, before the server has ever assigned that medication an ID. The outbox therefore sends one command per request rather than batching, so the server-assigned ID from the first can be substituted into the second, and the ID rewrite plus the outbox status flip happen in a single local transaction. Porting the domain logic also surfaced timezone bugs in the original TypeScript around DST boundaries; those were deliberately not reproduced, and the divergences are recorded rather than left implicit.",
       },
     ],
   },

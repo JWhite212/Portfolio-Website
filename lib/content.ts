@@ -584,7 +584,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Offline-first native client",
         detail:
-          "A macOS client shares the domain rules with the web app but keeps its own local SQLite store, so dose logging works with no connection and reconciles when the network returns. Its sync layer is complete and covered by 406 tests across six Swift packages; the user interface is still in progress.",
+          "A macOS client shares the domain rules with the web app but keeps its own local SQLite store, so dose logging works with no connection and reconciles when the network returns. Its sync layer is complete and covered by 406 tests across six Swift packages on the feature branch where it currently lives; the user interface is still in progress.",
       },
     ],
     challenges: [

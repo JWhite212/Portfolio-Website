@@ -48,8 +48,8 @@ export default function Image() {
               maxWidth: 900,
               color: "#e8e6e3",
             }}>
-            Building clear, reliable software across web, Java, and embedded
-            systems.
+            Building and shipping software across mobile, web, and the systems
+            behind them.
           </div>
           <div
             style={{

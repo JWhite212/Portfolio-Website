@@ -64,6 +64,7 @@ export function buildHomeStructuredData() {
       "SvelteKit",
       "React",
       "Swift",
+      "Embedded systems",
       "Software engineering",
       "Automated testing",
     ],

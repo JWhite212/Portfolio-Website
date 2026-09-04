@@ -55,9 +55,9 @@ export const profile: Profile = {
     },
     {
       label: "Technical range",
-      value: "Web to systems",
+      value: "Mobile to systems",
       detail:
-        "Recent work crosses App Router web apps, Java project design, and hardware-linked automation concepts.",
+        "Recent work crosses a Flutter app in beta on both app stores, typed web applications on Next.js and SvelteKit, and a native macOS client sharing domain logic with its web counterpart.",
     },
     {
       label: "Working habits",

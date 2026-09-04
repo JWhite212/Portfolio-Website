@@ -9,6 +9,10 @@ import medTrackerMedsImg from "@/public/medicationTrackerMedications.png";
 import medTrackerAddImg from "@/public/medicationTrackerAddMedication.png";
 import medTrackerHistoryImg from "@/public/medicationTrackerHistory.png";
 import medTrackerAnalyticsImg from "@/public/medicationTrackerAnalytics.png";
+import snacklessProgrammeImg from "@/public/snacklessProgramme.png";
+import snacklessOnboardingImg from "@/public/snacklessOnboarding.png";
+import snacklessCompletionImg from "@/public/snacklessCompletion.png";
+import snacklessAccessImg from "@/public/snacklessAccess.png";
 import plantSystemImg from "@/public/plantSystem.jpg";
 import vendingMachineImg from "@/public/vendingMachine.png";
 import type {
@@ -142,7 +146,32 @@ export const caseStudies: CaseStudy[] = [
         kind: "live",
       },
     ],
-    media: [],
+    media: [
+      {
+        src: snacklessProgrammeImg,
+        alt: "Snackless programme list with completed days checked, beside a day's detail screen showing the audio player, notes field, and food log",
+        caption:
+          "The daily loop. Left: the 30-day programme, with completed days checked and the next unlocked. Right: a day's session — audio coaching with resumable playback, a notes field, and the food log.",
+      },
+      {
+        src: snacklessOnboardingImg,
+        alt: "Snackless welcome screen followed by two in-app coach marks explaining audio playback and the food log",
+        caption:
+          "First-run onboarding. Coach marks introduce the audio session and the food log in context, at the moment each is first needed, rather than front-loading a tutorial.",
+      },
+      {
+        src: snacklessCompletionImg,
+        alt: "Snackless final programme days, the completion celebration screen, and the day-30 feedback form",
+        caption:
+          "The end of the programme — the closing days, the completion celebration, and the day-30 feedback form that submits back to the backend.",
+      },
+      {
+        src: snacklessAccessImg,
+        alt: "Snackless sign-in screen beside the subscription gate shown to users without an active subscription",
+        caption:
+          "Authentication and the subscription boundary. Without an active subscription the programme content stays locked and the user is routed to purchase rather than shown empty screens.",
+      },
+    ],
     featured: true,
     metrics: [
       {

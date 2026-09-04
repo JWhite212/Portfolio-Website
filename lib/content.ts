@@ -132,7 +132,7 @@ export const caseStudies: CaseStudy[] = [
     outcome: [
       "Shipped to beta on both platforms — TestFlight for iOS and a Google Play closed beta — against a live backend, with Firebase Crashlytics reporting from real devices.",
       "Sustained 736 commits across ten months on a single codebase, ending at 143 Dart source files and roughly 18,700 lines under lib/.",
-      "Built a 155-case test suite across 36 files, gated by three GitHub Actions workflows with coverage reporting.",
+      "Built a 155-case test suite across 36 files, with a GitHub Actions workflow configured for format checks, static analysis, and coverage reporting.",
       "Note: the repository is private and the code is commercially owned, so it is not linkable here. The architecture and decisions described above are drawn from the codebase directly.",
     ],
     links: [
@@ -157,10 +157,10 @@ export const caseStudies: CaseStudy[] = [
         detail: "Across 36 test files and roughly 7,200 lines of test code.",
       },
       {
-        label: "CI workflows",
-        value: "3",
+        label: "Feature modules",
+        value: "10",
         detail:
-          "GitHub Actions gating analysis and tests, with coverage reporting.",
+          "Each owning its own presentation, application, domain, and data layers.",
       },
       {
         label: "Build flavours",
@@ -537,7 +537,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     architecture: [
       "Svelte 5 runes ($props, $state, $derived, $effect) power the client-side reactivity layer, keeping component state predictable and the template syntax minimal.",
-      "SvelteKit form actions handle every mutation through +page.server.ts loaders and actions, with use:enhance providing progressive enhancement so the app degrades gracefully without JavaScript.",
+      "SvelteKit form actions handle every web mutation through +page.server.ts loaders and actions, with use:enhance providing progressive enhancement so the app degrades gracefully without JavaScript.",
       "Drizzle ORM provides type-safe query building against a Neon serverless PostgreSQL database, with schema definitions that double as the migration source via drizzle-kit.",
       "Lucia v3 manages database-backed sessions validated in hooks.server.ts on every request, with Arctic handling OAuth flows for Google and GitHub providers.",
       "Resend delivers transactional email for verification codes, password resets, and a daily Vercel Cron job at /api/cron/reminders that sends overdue medication alerts.",
@@ -805,7 +805,7 @@ export const education: EducationItem[] = [
     title: "Advanced Computer Science, MSc",
     grade: "Achieved: Distinction",
     institution: "University of Kent",
-    period: "Master's study",
+    period: "Postgraduate study",
     summary:
       "Expanded my software foundation with more advanced technical problem solving, deeper systems thinking, and project work that pushed beyond introductory development patterns.",
   },
@@ -813,7 +813,7 @@ export const education: EducationItem[] = [
     title: "Computer Science, BSc (Hons)",
     grade: "Achieved: Upper Second Class Honours (2:1)",
     institution: "University of Kent",
-    period: "Bachelor's foundation",
+    period: "Undergraduate foundation",
     summary:
       "Built the core grounding in programming, object-oriented design, databases, web development, and collaborative technical work that underpins the projects I continue to build.",
   },
@@ -954,15 +954,27 @@ export const skillsByGroup: SkillGroup[] = [
     title: "Languages and fundamentals",
     summary:
       "A practical base in typed and object-oriented programming, with an emphasis on readability and maintainable structure.",
-    skills: ["TypeScript", "JavaScript", "Java", "C++", "SQL", "HTML", "CSS"],
+    skills: [
+      "TypeScript",
+      "Dart",
+      "Swift",
+      "JavaScript",
+      "Java",
+      "C++",
+      "SQL",
+      "HTML",
+      "CSS",
+    ],
   },
   {
     title: "Frontend and product delivery",
     summary:
       "Modern frontend work focused on responsive interfaces, interaction polish, and maintainable component architecture.",
     skills: [
+      "Flutter",
       "React",
       "Next.js",
+      "SvelteKit",
       "Tailwind CSS",
       "Framer Motion",
       "Gatsby",

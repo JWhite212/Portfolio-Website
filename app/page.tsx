@@ -89,7 +89,7 @@ export default function Home() {
                 index={1}
                 eyebrow="Featured work"
                 title="Five projects that show how I build and ship."
-                body="A Flutter wellness app in beta on both app stores, a production medication tracker with a native client, a local-first desktop transcription tool, an embedded systems prototype, and the site you are reading — each chosen to show a different layer of the stack."
+                body="A Flutter wellness app in beta on both app stores, a local-first desktop transcription tool, a production medication tracker with a native client, an embedded systems prototype, and the site you are reading — each chosen to show a different layer of the stack."
               />
             </Reveal>
 

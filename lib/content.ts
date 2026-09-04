@@ -80,6 +80,153 @@ export const profile: Profile = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "snackless",
+    title: "Snackless",
+    summary:
+      "A Flutter wellness app delivering a 30-day audio coaching programme with day-gated content, resumable background playback, and offline-first daily tracking. In beta on TestFlight and Google Play.",
+    role: "Solo developer",
+    period: "2025 – 2026",
+    problem:
+      "Behaviour-change programmes fail when the app gets in the way. Users needed to move through thirty sequential days of audio coaching without losing their place, without being able to skip ahead and break the programme's structure, and without the app becoming useless the moment their connection dropped mid-session. The content also had to stay behind a subscription boundary, which meant authentication, token refresh, and access checks all had to be reliable rather than best-effort.",
+    approach: [
+      "Structured the codebase feature-first with strict layer boundaries (presentation, application, domain, data) so each feature owns its own vertical slice. The rules are enforced by convention and documented: no HTTP client in the application layer, no Flutter imports in the domain layer, which keeps business logic pure Dart and directly testable.",
+      "Centralised the day-unlock rules into a single pure-Dart policy object rather than scattering conditionals through the UI. Unlocking is driven by two independent paths — elapsed time and completion — and resolving both in one place removed a class of bugs where different screens disagreed about whether a day was available.",
+      "Built the network layer as a stack of composable Dio interceptors, each with one responsibility: attaching auth headers, refreshing expired tokens, retrying transient failures, and logging with sensitive fields redacted.",
+    ],
+    technicalDecisions: [
+      {
+        title: "A single unlock policy in the domain layer",
+        detail:
+          "ProgrammeUnlockPolicy is pure Dart with no Flutter or I/O dependencies. It resolves the highest unlocked day as max(currentDay, highestCompleted + 1), clamped to the programme length, so time-based progression and completion-based progression cannot disagree. Because it is a pure function it is unit tested directly, and every screen asks the same object rather than reimplementing the rule.",
+      },
+      {
+        title: "BLoC with hydrated state for resumability",
+        detail:
+          "State lives in flutter_bloc, with hydrated_bloc persisting the blocs that matter — programme progress, navigation, completion settings — to disk automatically. Reopening the app restores position without a bespoke save/restore path, and the persistence concern stays out of the UI entirely.",
+      },
+      {
+        title: "Composable Dio interceptors over a monolithic client",
+        detail:
+          "Auth, token refresh, retry, and redacted logging are four separate interceptors rather than branching logic inside one client. Each is independently testable and independently removable, and the redaction interceptor means debug logging can stay enabled without leaking tokens.",
+      },
+      {
+        title: "Background audio through audio_service",
+        detail:
+          "Coaching sessions play through audio_service and just_audio so playback survives backgrounding and integrates with OS media controls. Session position is tracked so a user can leave mid-session and resume where they stopped rather than restarting the day.",
+      },
+    ],
+    stack: [
+      "Flutter",
+      "Dart",
+      "BLoC",
+      "hydrated_bloc",
+      "GoRouter",
+      "get_it",
+      "Freezed",
+      "Dio",
+      "Hive",
+      "Firebase",
+      "audio_service",
+      "just_audio",
+    ],
+    outcome: [
+      "Shipped to beta on both platforms — TestFlight for iOS and a Google Play closed beta — against a live backend, with Firebase Crashlytics reporting from real devices.",
+      "Sustained 736 commits across ten months on a single codebase, ending at 143 Dart source files and roughly 18,700 lines under lib/.",
+      "Built a 155-case test suite across 36 files, gated by three GitHub Actions workflows with coverage reporting.",
+      "Note: the repository is private and the code is commercially owned, so it is not linkable here. The architecture and decisions described above are drawn from the codebase directly.",
+    ],
+    links: [
+      {
+        label: "Live product",
+        href: "https://snacklessnow.com",
+        kind: "live",
+      },
+    ],
+    media: [],
+    featured: true,
+    metrics: [
+      {
+        label: "Commits over 10 months",
+        value: "736",
+        detail:
+          "Sustained solo development from July 2025 to May 2026 on one codebase.",
+      },
+      {
+        label: "Test cases",
+        value: "155",
+        detail: "Across 36 test files and roughly 7,200 lines of test code.",
+      },
+      {
+        label: "CI workflows",
+        value: "3",
+        detail:
+          "GitHub Actions gating analysis and tests, with coverage reporting.",
+      },
+      {
+        label: "Build flavours",
+        value: "3",
+        detail: "Separate development, staging, and production entry points.",
+      },
+    ],
+    architecture: [
+      "Feature-first structure under lib/features — account, audio, auth, daily_data, feedback, onboarding, programme, programme_day, shell, today — each owning its own presentation, application, domain, and data layers.",
+      "Strict unidirectional flow: UI renders from BLoC state, BLoCs coordinate repositories, repositories own data sources. The domain layer is pure Dart with no Flutter imports, so it is deterministic and directly testable.",
+      "A Dio client composed of four single-responsibility interceptors — auth header injection, 401 token refresh, transient retry, and redacted logging.",
+      "Local persistence split by purpose: Hive for feature caches and offline reads, hydrated_bloc for automatic state restoration, and flutter_secure_storage for tokens.",
+      "Firebase provides Crashlytics, Firestore, and Analytics; audio_service and just_audio drive background playback with OS media controls.",
+      "Three build flavours (development, staging, production) with a shared bootstrap entry point, so environment configuration never leaks into feature code.",
+    ],
+    features: [
+      {
+        title: "30-day gated programme",
+        detail:
+          "Content unlocks day by day, driven by a single domain policy that resolves elapsed time and completion progress into one answer so no two screens disagree.",
+      },
+      {
+        title: "Resumable background audio",
+        detail:
+          "Sessions continue playing when the app is backgrounded, integrate with OS media controls, and resume from the last position rather than restarting.",
+      },
+      {
+        title: "Daily journaling and food log",
+        detail:
+          "Per-day notes, a snack-plan checklist, and a food log with timestamps and optional ratings, cached locally so entries survive connection loss.",
+      },
+      {
+        title: "Subscriber-gated access",
+        detail:
+          "Authentication with automatic token refresh and a subscription check; users without an active subscription are routed to sign-up rather than shown locked content.",
+      },
+      {
+        title: "Guided onboarding",
+        detail:
+          "An interactive coach-mark tutorial introduces the programme structure on first run.",
+      },
+      {
+        title: "Localisation-ready",
+        detail:
+          "All user-facing strings flow through Flutter's l10n pipeline with ARB resources rather than being hardcoded in widgets.",
+      },
+    ],
+    challenges: [
+      {
+        title: "Two sources of truth for whether a day is unlocked",
+        detail:
+          "Days unlock either because enough time has elapsed or because the previous day was completed, and early on the rule was reimplemented per screen. That let the programme list and the day page disagree. Consolidating into ProgrammeUnlockPolicy — a pure function taking current day, completed set, and programme length — made the rule testable in isolation and removed the disagreement by construction.",
+      },
+      {
+        title: "Keeping debug logging safe on a subscription API",
+        detail:
+          "Useful network logs and auth tokens travel in the same requests. Rather than disabling logging in release or relying on remembering to strip fields, redaction is its own interceptor in the chain, so sensitive values are removed at one known point regardless of who added the log call.",
+      },
+      {
+        title: "Preserving position across app lifecycle",
+        detail:
+          "Users leave mid-session and return later, sometimes after the OS has evicted the app. Rather than a bespoke persistence path, progress-bearing blocs are hydrated, so restoration is a property of the state layer instead of logic each screen must remember to run.",
+      },
+    ],
+  },
+  {
     slug: "context-recall",
     title: "Context Recall",
     summary:

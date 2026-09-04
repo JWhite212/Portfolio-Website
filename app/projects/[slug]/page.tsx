@@ -116,19 +116,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
 
           {/* Hero image */}
-          <div className="mt-12 border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-3">
-            <GlitchImage
-              src={caseStudy.media[0].src}
-              alt={caseStudy.media[0].alt}
-              fill
-              priority
-              sizes="(min-width: 1024px) 80rem, 100vw"
-              className="relative aspect-[16/9] border border-[var(--line)]"
-            />
-            <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-              {caseStudy.media[0].caption}
-            </p>
-          </div>
+          {caseStudy.media.length > 0 ? (
+            <div className="mt-12 border-brutal border-[var(--line-strong)] bg-[var(--surface)] p-3">
+              <GlitchImage
+                src={caseStudy.media[0].src}
+                alt={caseStudy.media[0].alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 80rem, 100vw"
+                className="relative aspect-[16/9] border border-[var(--line)]"
+              />
+              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
+                {caseStudy.media[0].caption}
+              </p>
+            </div>
+          ) : null}
 
           {caseStudy.metrics && caseStudy.metrics.length > 0 ? (
             <Reveal>

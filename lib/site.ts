@@ -7,7 +7,7 @@ export const siteConfig = {
   name: profile.name,
   title: `${profile.name} | ${profile.role}`,
   description:
-    "Employer-focused portfolio for Jamie White, an early-career software engineer building maintainable web, Java, and embedded systems work.",
+    "Portfolio for Jamie White, a software and solutions engineer building and shipping mobile, web, and systems software.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? fallbackSiteUrl,
 };
 
@@ -57,13 +57,15 @@ export function buildHomeStructuredData() {
     },
     sameAs: [contactConfig.githubHref, contactConfig.linkedInHref],
     knowsAbout: [
+      "Flutter",
+      "Dart",
       "TypeScript",
       "Next.js",
+      "SvelteKit",
       "React",
-      "Java",
-      "Object-oriented programming",
-      "Embedded systems",
+      "Swift",
       "Software engineering",
+      "Automated testing",
     ],
   };
 }

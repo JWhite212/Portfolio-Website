@@ -88,8 +88,8 @@ export default function Home() {
               <SectionIntro
                 index={1}
                 eyebrow="Featured work"
-                title="Four projects that best represent how I think and build."
-                body="These are the strongest examples of my technical judgement right now: a local-first desktop transcription tool, a production SvelteKit medication tracker, a cross-disciplinary embedded systems prototype, and a fundamentals-heavy Java build — each chosen to show different layers of the stack."
+                title="Five projects that show how I build and ship."
+                body="A Flutter wellness app in beta on both app stores, a production medication tracker with a native client, a local-first desktop transcription tool, an embedded systems prototype, and the site you are reading — each chosen to show a different layer of the stack."
               />
             </Reveal>
 

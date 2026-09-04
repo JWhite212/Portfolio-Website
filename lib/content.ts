@@ -32,19 +32,19 @@ export const navigation: NavigationItem[] = [
 
 export const profile: Profile = {
   name: "Jamie White",
-  role: "Early-career Software Engineer",
+  role: "Software & Solutions Engineer",
   location: "United Kingdom",
   heroEyebrow: "Jamie White / software engineer / UK-based",
   heroHeadline:
-    "Building clear, reliable software across modern web delivery, object-oriented systems, and embedded prototypes.",
+    "Building and shipping software that stays maintainable after the first release — mobile, web, and the systems behind them.",
   heroSummary:
-    "I enjoy turning fuzzy ideas into maintainable software with strong fundamentals, deliberate architecture, and interface polish. My work spans typed Next.js applications, Java domain modelling, and sensor-driven automation systems.",
+    "I work across the stack and take features from design through to production: a Flutter wellness app in beta on both stores, a SvelteKit medication tracker with a native macOS client, and a local-first desktop transcription tool. I care about testing, clear boundaries, and code that reads well six months later.",
   availability:
-    "Open to graduate, junior, and early-career software engineering roles where I can keep building depth while contributing responsibly.",
+    "Working as a Software and Solutions Engineer and open to roles where I can take more ownership of production systems.",
   quickFacts: [
-    "TypeScript, React, Next.js, Tailwind, Framer Motion",
-    "Java, JUnit, domain modelling, and OOP fundamentals",
-    "Embedded systems, sensor data, and control-driven prototypes",
+    "Flutter and Dart, BLoC architecture, published to TestFlight and Google Play",
+    "TypeScript across Next.js, SvelteKit, and Node — typed end to end",
+    "Testing, CI, and security hardening as part of delivery, not after it",
   ],
   proofPoints: [
     {
@@ -68,7 +68,7 @@ export const profile: Profile = {
   ],
   about: [
     "I am motivated by software that stays understandable after the first version ships. That means modelling the problem clearly, choosing tools for the job rather than for novelty, and keeping implementation detail honest.",
-    "The projects I am most proud of combine technical curiosity with delivery discipline: responsive interfaces that feel polished, Java systems shaped around strong object-oriented principles, and embedded prototypes that connect software decisions to behaviour in the real world.",
+    "The work I am most proud of shares a shape: a real user-facing product, a test suite I trust, and architecture decisions I can still justify. That covers a thirty-day coaching app in beta, a medication tracker hardened over several security review passes, and embedded prototypes that tie software decisions to real-world behaviour.",
   ],
   principles: [
     "Design the model before chasing the UI.",
@@ -805,7 +805,7 @@ export const education: EducationItem[] = [
     title: "Advanced Computer Science, MSc",
     grade: "Achieved: Distinction",
     institution: "University of Kent",
-    period: "Postgraduate study",
+    period: "Master's study",
     summary:
       "Expanded my software foundation with more advanced technical problem solving, deeper systems thinking, and project work that pushed beyond introductory development patterns.",
   },
@@ -813,7 +813,7 @@ export const education: EducationItem[] = [
     title: "Computer Science, BSc (Hons)",
     grade: "Achieved: Upper Second Class Honours (2:1)",
     institution: "University of Kent",
-    period: "Undergraduate foundation",
+    period: "Bachelor's foundation",
     summary:
       "Built the core grounding in programming, object-oriented design, databases, web development, and collaborative technical work that underpins the projects I continue to build.",
   },
@@ -1002,7 +1002,7 @@ export const contactConfig: ContactConfig = {
   email: "jamiecs@live.co.uk",
   cvHref: "/Jamie White CV.pdf",
   formIntro:
-    "If you are hiring for an early-career engineering role, want to discuss one of the projects here, or would like a copy of my CV, I would be glad to hear from you.",
+    "If you are hiring for a software engineering role, want to discuss one of the projects here, or would like a copy of my CV, I would be glad to hear from you.",
   availabilityNote:
     "I am currently open to software engineering opportunities in teams that value strong fundamentals, curiosity, and reliable delivery.",
   responseNote:

@@ -273,7 +273,7 @@ export default function Home() {
                           <li
                             key={highlight}
                             className="text-sm leading-7 text-[var(--foreground)]">
-                            <span className="text-[var(--muted)]">//</span>{" "}
+                            <span className="text-[var(--muted)]">{"//"}</span>{" "}
                             {highlight}
                           </li>
                         ))}

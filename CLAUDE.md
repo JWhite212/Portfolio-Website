@@ -1,6 +1,6 @@
 # Portfolio Website
 
-Personal portfolio for Jamie White — Next.js 14 (App Router), TypeScript, Tailwind CSS.
+Personal portfolio for Jamie White — Next.js 16 (App Router), TypeScript, Tailwind CSS.
 
 ## Commands
 

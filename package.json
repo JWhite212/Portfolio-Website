@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "check": "prettier --check . && next lint",
-    "fix": "prettier --write . && next --fix"
+    "lint": "eslint .",
+    "check": "prettier --check . && eslint .",
+    "fix": "prettier --write . && eslint . --fix"
   },
   "dependencies": {
     "@types/node": "20.10.6",

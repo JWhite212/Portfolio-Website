@@ -573,7 +573,7 @@ export const caseStudies: CaseStudy[] = [
           "A focused Java build designed to showcase object-oriented thinking, maintainable structure, and testable behaviour.",
       },
     ],
-    featured: true,
+    featured: false,
     githubUrl: "https://github.com/JWhite212/VendingMachine",
   },
   {
